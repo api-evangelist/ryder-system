@@ -1,0 +1,27 @@
+aid: ryder-system
+url: https://raw.githubusercontent.com/api-evangelist/ryder-system/refs/heads/main/apis.yml
+apis:
+  - aid: ryder-system:fleet-management-api
+    name: Ryder Fleet Management API
+    tags:
+      - Fleet Management
+      - Vehicles
+      - Logistics
+      - Maintenance
+      - Invoices
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    baseURL: https://developer.ryder.com
+    humanURL: https://developer.ryder.com/fms/overview
+    properties:
+      - url: https://developer.ryder.com/fms/overview
+        type: Documentation
+      - url: openapi/ryder-fleet-management-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      The Ryder Fleet Management API enables seamless integration of fleet
+      and location data into business systems. It provides access to Ryder
+      fleet details including vehicle information and specifications, location
+      data with address and service hours, historical maintenance records,
+      and invoice details with line items and payment status. The API is
+      designed for Ryder lease customers and requires API key authentication
+      via the Ocp-Apim-Subscription-Key header.
