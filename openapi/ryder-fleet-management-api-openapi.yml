@@ -1,0 +1,252 @@
+openapi: 3.1.0
+info:
+  title: Ryder Fleet Management API
+  description: >-
+    The Ryder Fleet Management API enables seamless integration of fleet
+    and location data into business systems. It provides access to Ryder
+    fleet details including vehicle information and specifications, location
+    data with address and service hours, historical maintenance records,
+    and invoice details with line items and payment status.
+  version: '2026-01-01'
+  contact:
+    name: Ryder Developer Portal
+    url: https://developer.ryder.com
+externalDocs:
+  description: Ryder FMS API Documentation
+  url: https://developer.ryder.com/fms/docs/fms-fleet-api/overview
+servers:
+  - url: https://developer.ryder.com/fms/apis
+    description: Production
+tags:
+  - name: Fleet
+    description: Fleet vehicle information and specifications
+  - name: Locations
+    description: Location information and service details
+  - name: Service History
+    description: Historical maintenance records
+  - name: Invoices
+    description: Invoice details and payment status
+security:
+  - apiKeyAuth: []
+paths:
+  /fleet:
+    get:
+      operationId: listFleetVehicles
+      summary: List fleet vehicles
+      description: >-
+        Retrieve a list of vehicles in the fleet, including vehicle
+        information and specifications.
+      tags:
+        - Fleet
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vehicles:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Vehicle'
+        '401':
+          description: Unauthorized
+  /fleet/{vehicleId}:
+    get:
+      operationId: getVehicle
+      summary: Get vehicle details
+      description: Retrieve detailed information about a specific vehicle.
+      tags:
+        - Fleet
+      parameters:
+        - name: vehicleId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vehicle'
+        '404':
+          description: Vehicle not found
+  /locations:
+    get:
+      operationId: listLocations
+      summary: List locations
+      description: >-
+        Retrieve location information including address, services offered,
+        business hours, and contact details.
+      tags:
+        - Locations
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  locations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Location'
+  /fleet/{vehicleId}/service-history:
+    get:
+      operationId: getServiceHistory
+      summary: Get service history
+      description: Retrieve historical maintenance records for a specific vehicle.
+      tags:
+        - Service History
+      parameters:
+        - name: vehicleId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  records:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ServiceRecord'
+  /invoices:
+    get:
+      operationId: listInvoices
+      summary: List invoices
+      description: >-
+        Retrieve historical invoice details for the fleet, including
+        line items, payment status, and customer-specific account details.
+      tags:
+        - Invoices
+      parameters:
+        - name: startDate
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  invoices:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Invoice'
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Ocp-Apim-Subscription-Key
+  schemas:
+    Vehicle:
+      type: object
+      properties:
+        vehicleId:
+          type: string
+        vin:
+          type: string
+        make:
+          type: string
+        model:
+          type: string
+        year:
+          type: integer
+        status:
+          type: string
+        mileage:
+          type: integer
+    Location:
+      type: object
+      properties:
+        locationId:
+          type: string
+        name:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        services:
+          type: array
+          items:
+            type: string
+        businessHours:
+          type: string
+        phone:
+          type: string
+    ServiceRecord:
+      type: object
+      properties:
+        recordId:
+          type: string
+        vehicleId:
+          type: string
+        serviceDate:
+          type: string
+          format: date
+        description:
+          type: string
+        cost:
+          type: number
+          format: double
+    Invoice:
+      type: object
+      properties:
+        invoiceId:
+          type: string
+        date:
+          type: string
+          format: date
+        amount:
+          type: number
+          format: double
+        status:
+          type: string
+          enum:
+            - paid
+            - pending
+            - overdue
+        lineItems:
+          type: array
+          items:
+            type: object
+            properties:
+              description:
+                type: string
+              amount:
+                type: number
+                format: double
