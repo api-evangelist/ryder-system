@@ -20,12 +20,12 @@ servers:
 tags:
   - name: Fleet
     description: Fleet vehicle information and specifications
+  - name: Invoices
+    description: Invoice details and payment status
   - name: Locations
     description: Location information and service details
   - name: Service History
     description: Historical maintenance records
-  - name: Invoices
-    description: Invoice details and payment status
 security:
   - apiKeyAuth: []
 paths:
