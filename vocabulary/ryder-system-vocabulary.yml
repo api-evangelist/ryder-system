@@ -1,0 +1,121 @@
+vocabulary:
+  name: Ryder System API Vocabulary
+  description: >-
+    Vocabulary and terminology for the Ryder System REST APIs covering Fleet
+    Management System (FMS) and Supply Chain Solutions (SCS) including carrier
+    management, shipment management, and last-mile delivery.
+  version: '2026-05-02'
+  terms:
+    - term: Fleet Management System (FMS)
+      definition: >-
+        Ryder's platform for customers who lease, rent, and maintain commercial
+        vehicles. Provides APIs for vehicle data, location information, service
+        history, and invoice management.
+      tags:
+        - Fleet Management
+    - term: Supply Chain Solutions (SCS)
+      definition: >-
+        Ryder's logistics platform covering transportation management, carrier
+        services, last-mile delivery, and shipment tracking.
+      tags:
+        - Supply Chain
+        - Logistics
+    - term: Ocp-Apim-Subscription-Key
+      definition: >-
+        The API authentication header used across all Ryder APIs. Contains the
+        subscription key assigned when registering an application on the Ryder
+        Developer Portal.
+      tags:
+        - Authentication
+    - term: Lessee Number
+      definition: >-
+        A unique identifier assigned to each Ryder lease customer. Required to
+        access Fleet Management APIs, as fleet data is scoped to the lessee.
+      tags:
+        - Fleet Management
+        - Authentication
+    - term: Vehicle
+      definition: >-
+        A commercial vehicle (truck, trailer, or fleet asset) in the Ryder FMS.
+        Identified by vehicleId and may include VIN, make, model, year, and mileage.
+      tags:
+        - Fleet Management
+    - term: VIN
+      definition: >-
+        Vehicle Identification Number - a unique 17-character code identifying each
+        motor vehicle. Used in Ryder APIs to uniquely reference specific vehicles.
+      tags:
+        - Fleet Management
+        - Vehicles
+    - term: Service History
+      definition: >-
+        Historical records of maintenance and repair activities performed on a
+        fleet vehicle at Ryder service centers, including service dates, descriptions,
+        and costs.
+      tags:
+        - Fleet Management
+        - Maintenance
+    - term: Load Tender
+      definition: >-
+        A request from Ryder to a carrier to transport freight on a specific route.
+        Carriers can accept or decline load tenders via the Carrier API.
+      tags:
+        - Carrier Management
+        - Supply Chain
+    - term: Load Event
+      definition: >-
+        A status update submitted by a carrier for a specific load, indicating
+        milestones such as pickup_arrived, pickup_completed, delivery_arrived,
+        delivery_completed, delay, or exception.
+      tags:
+        - Carrier Management
+        - Tracking
+    - term: Shipment
+      definition: >-
+        A transportation request submitted by a customer to Ryder TM, representing
+        cargo to be moved from an origin address to a destination address.
+      tags:
+        - Supply Chain
+        - Transportation
+    - term: Ship Confirmation
+      definition: >-
+        A confirmation submitted by the customer after goods are shipped, providing
+        actual ship date, tracking number, and carrier information.
+      tags:
+        - Supply Chain
+    - term: Ship Status
+      definition: >-
+        Real-time status and location tracking for a shipment throughout its
+        lifecycle, including current location, last event, and estimated delivery.
+      tags:
+        - Supply Chain
+        - Tracking
+    - term: RyderShare
+      definition: >-
+        Ryder's document management platform where carriers upload shipping
+        documents (BOL, POD, rate confirmations, invoices) associated with loads.
+      tags:
+        - Documents
+        - Supply Chain
+    - term: Last Mile
+      definition: >-
+        The final leg of delivery from a distribution center or hub to the end
+        consumer or recipient. Ryder Last Mile API handles e-commerce parcel delivery.
+      tags:
+        - E-Commerce
+        - Logistics
+    - term: 3PA (Third Party Administration)
+      definition: >-
+        Ryder's third-party logistics service where Ryder manages transportation
+        on behalf of customers using carrier networks. 3PA Load Tracking API provides
+        visibility into these loads.
+      tags:
+        - Logistics
+        - Supply Chain
+    - term: TM Shipment
+      definition: >-
+        A shipment within Ryder's Transportation Management (TM) platform, managed
+        through the TM Shipment Management API with OAuth 2.0 authentication.
+      tags:
+        - Supply Chain
+        - Transportation

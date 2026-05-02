@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12",
+  "$id": "https://api-evangelist.github.io/ryder-system/json-schema/ryder-vehicle-schema.json",
+  "title": "Ryder Vehicle",
+  "description": "A commercial vehicle in the Ryder fleet management system",
+  "type": "object",
+  "properties": {
+    "vehicleId": {
+      "type": "string",
+      "description": "Unique vehicle identifier"
+    },
+    "vin": {
+      "type": "string",
+      "description": "Vehicle Identification Number (17 characters)"
+    },
+    "make": {
+      "type": "string",
+      "description": "Vehicle manufacturer (e.g., Peterbilt, International, Freightliner)"
+    },
+    "model": {
+      "type": "string",
+      "description": "Vehicle model"
+    },
+    "year": {
+      "type": "integer",
+      "description": "Model year"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current vehicle status"
+    },
+    "mileage": {
+      "type": "integer",
+      "description": "Current odometer reading in miles"
+    }
+  },
+  "required": ["vehicleId"]
+}

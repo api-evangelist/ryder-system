@@ -32,7 +32,7 @@ paths:
   /fleet:
     get:
       operationId: listFleetVehicles
-      summary: List fleet vehicles
+      summary: List Fleet Vehicles
       description: >-
         Retrieve a list of vehicles in the fleet, including vehicle
         information and specifications.
@@ -64,7 +64,7 @@ paths:
   /fleet/{vehicleId}:
     get:
       operationId: getVehicle
-      summary: Get vehicle details
+      summary: Get Vehicle Details
       description: Retrieve detailed information about a specific vehicle.
       tags:
         - Fleet
@@ -86,7 +86,7 @@ paths:
   /locations:
     get:
       operationId: listLocations
-      summary: List locations
+      summary: List Locations
       description: >-
         Retrieve location information including address, services offered,
         business hours, and contact details.
@@ -107,7 +107,7 @@ paths:
   /fleet/{vehicleId}/service-history:
     get:
       operationId: getServiceHistory
-      summary: Get service history
+      summary: Get Service History
       description: Retrieve historical maintenance records for a specific vehicle.
       tags:
         - Service History
@@ -132,7 +132,7 @@ paths:
   /invoices:
     get:
       operationId: listInvoices
-      summary: List invoices
+      summary: List Invoices
       description: >-
         Retrieve historical invoice details for the fleet, including
         line items, payment status, and customer-specific account details.

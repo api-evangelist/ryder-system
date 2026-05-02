@@ -1,0 +1,71 @@
+extends: spectral:oas
+rules:
+  ryder-api-key-auth:
+    description: Ryder APIs use API key authentication via Ocp-Apim-Subscription-Key header
+    message: "API must define Ocp-Apim-Subscription-Key apiKey security scheme"
+    severity: error
+    given: "$.components.securitySchemes"
+    then:
+      function: truthy
+
+  ryder-operation-id-camel-case:
+    description: All Ryder operationIds should use camelCase
+    message: "OperationId '{{value}}' should use camelCase naming"
+    severity: warn
+    given: "$.paths[*][*].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  ryder-tags-title-case:
+    description: All tags must use Title Case
+    message: "Tag '{{value}}' should use Title Case"
+    severity: warn
+    given: "$.paths[*][*].tags[*]"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z0-9 &-]*$"
+
+  ryder-summaries-title-case:
+    description: Operation summaries must use Title Case
+    message: "Summary '{{value}}' should use Title Case"
+    severity: warn
+    given: "$.paths[*][*].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z0-9 &-]*$"
+
+  ryder-response-200-required:
+    description: All operations must have a 200 or 201 success response
+    message: "Operation '{{description}}' is missing a success response"
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete].responses"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          anyOf:
+            - required: ["200"]
+            - required: ["201"]
+
+  ryder-pagination-page-params:
+    description: List operations should support page/pageSize pagination
+    message: "List operation should support page and pageSize parameters"
+    severity: info
+    given: "$.paths[*].get"
+    then:
+      field: parameters
+      function: truthy
+
+  ryder-path-params-required:
+    description: Path parameters must be marked as required
+    message: "Path parameter '{{value}}' must be marked as required: true"
+    severity: error
+    given: "$.paths[*][*].parameters[?(@.in == 'path')]"
+    then:
+      field: required
+      function: truthy

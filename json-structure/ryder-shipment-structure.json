@@ -1,0 +1,68 @@
+{
+  "title": "Ryder Shipment",
+  "description": "Structure of the Ryder TM shipment object",
+  "fields": [
+    {
+      "name": "shipmentId",
+      "type": "string",
+      "required": true,
+      "description": "Unique shipment identifier"
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "required": true,
+      "description": "Shipment status: pending, in_transit, delivered, or cancelled"
+    },
+    {
+      "name": "origin",
+      "type": "object",
+      "required": true,
+      "description": "Origin address",
+      "fields": [
+        {"name": "name", "type": "string"},
+        {"name": "address", "type": "string"},
+        {"name": "city", "type": "string"},
+        {"name": "state", "type": "string"},
+        {"name": "zip", "type": "string"}
+      ]
+    },
+    {
+      "name": "destination",
+      "type": "object",
+      "required": true,
+      "description": "Destination address",
+      "fields": [
+        {"name": "name", "type": "string"},
+        {"name": "address", "type": "string"},
+        {"name": "city", "type": "string"},
+        {"name": "state", "type": "string"},
+        {"name": "zip", "type": "string"}
+      ]
+    },
+    {
+      "name": "requestedPickupDate",
+      "type": "date",
+      "required": true,
+      "description": "Requested pickup date (YYYY-MM-DD)"
+    },
+    {
+      "name": "requestedDeliveryDate",
+      "type": "date",
+      "required": false,
+      "description": "Requested delivery date (YYYY-MM-DD)"
+    },
+    {
+      "name": "weight",
+      "type": "number",
+      "required": false,
+      "description": "Total weight in pounds"
+    },
+    {
+      "name": "commodityDescription",
+      "type": "string",
+      "required": false,
+      "description": "Description of what is being shipped"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "title": "Ryder Vehicle",
+  "description": "Structure of the Ryder fleet vehicle object",
+  "fields": [
+    {
+      "name": "vehicleId",
+      "type": "string",
+      "required": true,
+      "description": "Unique vehicle identifier"
+    },
+    {
+      "name": "vin",
+      "type": "string",
+      "required": false,
+      "description": "Vehicle Identification Number (17 characters)"
+    },
+    {
+      "name": "make",
+      "type": "string",
+      "required": false,
+      "description": "Manufacturer (Peterbilt, International, Freightliner, etc.)"
+    },
+    {
+      "name": "model",
+      "type": "string",
+      "required": false,
+      "description": "Vehicle model"
+    },
+    {
+      "name": "year",
+      "type": "integer",
+      "required": false,
+      "description": "Model year"
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "required": false,
+      "description": "Current vehicle operational status"
+    },
+    {
+      "name": "mileage",
+      "type": "integer",
+      "required": false,
+      "description": "Current odometer reading in miles"
+    }
+  ]
+}

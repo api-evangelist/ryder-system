@@ -1,0 +1,34 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://developer.ryder.com/fms/apis/fleet?page=1&pageSize=10",
+    "headers": {
+      "Ocp-Apim-Subscription-Key": "your-api-key-here"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "vehicles": [
+        {
+          "vehicleId": "VH-001234",
+          "vin": "1XPWD49X1ED215307",
+          "make": "Peterbilt",
+          "model": "579",
+          "year": 2024,
+          "status": "active",
+          "mileage": 45230
+        },
+        {
+          "vehicleId": "VH-001235",
+          "vin": "3HSDJAPR0KN576452",
+          "make": "International",
+          "model": "LT Series",
+          "year": 2023,
+          "status": "in_service",
+          "mileage": 112000
+        }
+      ]
+    }
+  }
+}

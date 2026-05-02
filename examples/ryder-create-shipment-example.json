@@ -1,0 +1,58 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.ryder.com/tmshipment/v1/shipments",
+    "headers": {
+      "Ocp-Apim-Subscription-Key": "your-api-key-here",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "origin": {
+        "name": "ABC Manufacturing",
+        "address": "100 Industrial Blvd",
+        "city": "Houston",
+        "state": "TX",
+        "zip": "77001"
+      },
+      "destination": {
+        "name": "XYZ Distribution Center",
+        "address": "500 Logistics Way",
+        "city": "Atlanta",
+        "state": "GA",
+        "zip": "30301"
+      },
+      "requestedPickupDate": "2026-05-10",
+      "requestedDeliveryDate": "2026-05-13",
+      "weight": 15000,
+      "commodityDescription": "Industrial equipment parts",
+      "specialInstructions": "Dock-to-dock, call before delivery"
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "shipmentId": "SHP-2026-005432",
+      "status": "pending",
+      "origin": {
+        "name": "ABC Manufacturing",
+        "address": "100 Industrial Blvd",
+        "city": "Houston",
+        "state": "TX",
+        "zip": "77001"
+      },
+      "destination": {
+        "name": "XYZ Distribution Center",
+        "address": "500 Logistics Way",
+        "city": "Atlanta",
+        "state": "GA",
+        "zip": "30301"
+      },
+      "requestedPickupDate": "2026-05-10",
+      "requestedDeliveryDate": "2026-05-13",
+      "weight": 15000,
+      "commodityDescription": "Industrial equipment parts",
+      "createdAt": "2026-05-02T14:30:00Z",
+      "updatedAt": "2026-05-02T14:30:00Z"
+    }
+  }
+}

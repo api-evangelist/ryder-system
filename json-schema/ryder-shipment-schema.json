@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12",
+  "$id": "https://api-evangelist.github.io/ryder-system/json-schema/ryder-shipment-schema.json",
+  "title": "Ryder Shipment",
+  "description": "A shipment managed by Ryder Transportation Management",
+  "type": "object",
+  "properties": {
+    "shipmentId": {
+      "type": "string",
+      "description": "Unique shipment identifier"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "in_transit", "delivered", "cancelled"],
+      "description": "Current shipment status"
+    },
+    "origin": {
+      "$ref": "#/$defs/Address"
+    },
+    "destination": {
+      "$ref": "#/$defs/Address"
+    },
+    "requestedPickupDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Requested pickup date"
+    },
+    "requestedDeliveryDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Requested delivery date"
+    },
+    "actualPickupDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Actual pickup date and time"
+    },
+    "actualDeliveryDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Actual delivery date and time"
+    },
+    "weight": {
+      "type": "number",
+      "description": "Total weight in pounds"
+    },
+    "commodityDescription": {
+      "type": "string",
+      "description": "Description of the shipment commodity"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": ["shipmentId", "status"],
+  "$defs": {
+    "Address": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string",
+          "default": "US"
+        }
+      },
+      "required": ["address", "city", "state", "zip"]
+    }
+  }
+}

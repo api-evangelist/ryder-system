@@ -1,0 +1,30 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://developer.ryder.com/fms/apis/fleet/VH-001234/service-history",
+    "headers": {
+      "Ocp-Apim-Subscription-Key": "your-api-key-here"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "records": [
+        {
+          "recordId": "SR-9001",
+          "vehicleId": "VH-001234",
+          "serviceDate": "2026-03-15",
+          "description": "Preventive Maintenance - PM1 Service",
+          "cost": 425.00
+        },
+        {
+          "recordId": "SR-8745",
+          "vehicleId": "VH-001234",
+          "serviceDate": "2026-01-08",
+          "description": "Brake Inspection and Adjustment",
+          "cost": 285.50
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "ryder": "https://www.ryder.com/vocab/",
+    "Vehicle": {
+      "@id": "schema:Vehicle",
+      "@type": "@id"
+    },
+    "vehicleId": {
+      "@id": "ryder:vehicleId",
+      "@type": "schema:Text"
+    },
+    "vin": {
+      "@id": "schema:vehicleIdentificationNumber",
+      "@type": "schema:Text"
+    },
+    "make": {
+      "@id": "schema:vehicleMake",
+      "@type": "schema:Text"
+    },
+    "model": {
+      "@id": "schema:vehicleModelDate",
+      "@type": "schema:Text"
+    },
+    "year": {
+      "@id": "schema:modelDate",
+      "@type": "schema:Integer"
+    },
+    "mileage": {
+      "@id": "schema:mileageFromOdometer",
+      "@type": "schema:QuantitativeValue"
+    },
+    "status": {
+      "@id": "schema:status",
+      "@type": "schema:Text"
+    },
+    "ServiceRecord": {
+      "@id": "ryder:ServiceRecord",
+      "@type": "@id"
+    },
+    "serviceDate": {
+      "@id": "schema:datePosted",
+      "@type": "schema:Date"
+    },
+    "cost": {
+      "@id": "schema:price",
+      "@type": "schema:Number"
+    },
+    "Location": {
+      "@id": "schema:LocalBusiness",
+      "@type": "@id"
+    },
+    "locationId": {
+      "@id": "schema:identifier",
+      "@type": "schema:Text"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "schema:Text"
+    },
+    "address": {
+      "@id": "schema:address",
+      "@type": "schema:PostalAddress"
+    },
+    "city": {
+      "@id": "schema:addressLocality",
+      "@type": "schema:Text"
+    },
+    "state": {
+      "@id": "schema:addressRegion",
+      "@type": "schema:Text"
+    },
+    "zip": {
+      "@id": "schema:postalCode",
+      "@type": "schema:Text"
+    },
+    "businessHours": {
+      "@id": "schema:openingHours",
+      "@type": "schema:Text"
+    },
+    "Shipment": {
+      "@id": "schema:ParcelDelivery",
+      "@type": "@id"
+    },
+    "shipmentId": {
+      "@id": "schema:trackingNumber",
+      "@type": "schema:Text"
+    },
+    "origin": {
+      "@id": "schema:originAddress",
+      "@type": "@id"
+    },
+    "destination": {
+      "@id": "schema:deliveryAddress",
+      "@type": "@id"
+    },
+    "requestedPickupDate": {
+      "@id": "ryder:requestedPickupDate",
+      "@type": "schema:Date"
+    },
+    "requestedDeliveryDate": {
+      "@id": "schema:expectedArrivalUntil",
+      "@type": "schema:Date"
+    },
+    "actualDeliveryDate": {
+      "@id": "schema:deliveryDate",
+      "@type": "schema:DateTime"
+    },
+    "Invoice": {
+      "@id": "schema:Invoice",
+      "@type": "@id"
+    },
+    "invoiceId": {
+      "@id": "schema:identifier",
+      "@type": "schema:Text"
+    },
+    "amount": {
+      "@id": "schema:totalPaymentDue",
+      "@type": "schema:MonetaryAmount"
+    }
+  }
+}

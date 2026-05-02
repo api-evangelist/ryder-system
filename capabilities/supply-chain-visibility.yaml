@@ -1,0 +1,287 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Ryder Supply Chain Visibility"
+  description: >-
+    Unified workflow for supply chain visibility across Ryder's carrier and
+    shipment management APIs. Enables logistics managers to manage carrier
+    load tenders, track shipment status in real-time, submit ship confirmations,
+    and monitor vehicle locations throughout the supply chain lifecycle.
+  tags:
+    - Carrier Management
+    - Load Tracking
+    - Logistics
+    - Shipment Management
+    - Supply Chain
+    - Transportation
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      RYDER_CARRIER_API_KEY: RYDER_CARRIER_API_KEY
+      RYDER_TM_API_KEY: RYDER_TM_API_KEY
+      RYDER_TM_CLIENT_ID: RYDER_TM_CLIENT_ID
+      RYDER_TM_CLIENT_SECRET: RYDER_TM_CLIENT_SECRET
+
+capability:
+  consumes:
+    - import: ryder-carrier
+      location: ./shared/carrier-api.yaml
+    - import: ryder-tm
+      location: ./shared/tm-shipment.yaml
+
+  exposes:
+    - type: rest
+      port: 8081
+      namespace: ryder-supply-chain-api
+      description: "Unified REST API for Ryder supply chain visibility and management."
+      resources:
+        - path: /v1/shipments
+          name: shipments
+          description: "Shipment management"
+          operations:
+            - method: GET
+              name: list-shipments
+              description: "List shipments with current status"
+              call: "ryder-tm.list-shipments"
+              with:
+                status: "rest.query.status"
+                startDate: "rest.query.startDate"
+                endDate: "rest.query.endDate"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-shipment
+              description: "Submit shipment requirements to Ryder"
+              call: "ryder-tm.create-shipment"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/shipments/{shipmentId}
+          name: shipment
+          description: "Single shipment"
+          operations:
+            - method: GET
+              name: get-shipment
+              description: "Get shipment details"
+              call: "ryder-tm.get-shipment"
+              with:
+                shipmentId: "rest.path.shipmentId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PUT
+              name: update-shipment
+              description: "Update shipment details"
+              call: "ryder-tm.update-shipment"
+              with:
+                shipmentId: "rest.path.shipmentId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/shipments/{shipmentId}/status
+          name: shipment-status
+          description: "Shipment tracking status"
+          operations:
+            - method: GET
+              name: get-shipment-status
+              description: "Get real-time tracking status for a shipment"
+              call: "ryder-tm.get-shipment-status"
+              with:
+                shipmentId: "rest.path.shipmentId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/ship-confirmations
+          name: ship-confirmations
+          description: "Ship confirmations"
+          operations:
+            - method: POST
+              name: confirm-shipment
+              description: "Submit ship confirmation when goods are shipped"
+              call: "ryder-tm.confirm-shipment"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/loads
+          name: loads
+          description: "Load tenders (carrier)"
+          operations:
+            - method: GET
+              name: list-loads
+              description: "List carrier load tenders"
+              call: "ryder-carrier.list-loads"
+              with:
+                status: "rest.query.status"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/loads/{loadId}
+          name: load
+          description: "Single load tender"
+          operations:
+            - method: GET
+              name: get-load
+              description: "Get load tender details"
+              call: "ryder-carrier.get-load"
+              with:
+                loadId: "rest.path.loadId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/tracking
+          name: tracking
+          description: "Vehicle location tracking"
+          operations:
+            - method: POST
+              name: submit-location-update
+              description: "Submit vehicle location update"
+              call: "ryder-carrier.submit-location-update"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9081
+      namespace: ryder-supply-chain-mcp
+      transport: http
+      description: "MCP server for AI-assisted Ryder supply chain visibility."
+      tools:
+        - name: list-shipments
+          description: "List shipments with current status and tracking information"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "ryder-tm.list-shipments"
+          with:
+            status: "tools.status"
+            startDate: "tools.startDate"
+            endDate: "tools.endDate"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-shipment
+          description: "Get detailed information for a specific shipment"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "ryder-tm.get-shipment"
+          with:
+            shipmentId: "tools.shipmentId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-shipment
+          description: "Submit new shipment requirements to Ryder transportation management"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "ryder-tm.create-shipment"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: update-shipment
+          description: "Update shipment pickup date or special instructions"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: true
+          call: "ryder-tm.update-shipment"
+          with:
+            shipmentId: "tools.shipmentId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-shipment-status
+          description: "Get real-time tracking status and location for a shipment"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "ryder-tm.get-shipment-status"
+          with:
+            shipmentId: "tools.shipmentId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: confirm-shipment
+          description: "Submit ship confirmation with actual ship date and tracking number"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "ryder-tm.confirm-shipment"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-carrier-loads
+          description: "List load tenders assigned to the carrier from Ryder"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "ryder-carrier.list-loads"
+          with:
+            status: "tools.status"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-carrier-load
+          description: "Get detailed information for a specific carrier load tender"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "ryder-carrier.get-load"
+          with:
+            loadId: "tools.loadId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: accept-load
+          description: "Accept a load tender from Ryder"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "ryder-carrier.accept-load"
+          with:
+            loadId: "tools.loadId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: decline-load
+          description: "Decline a load tender from Ryder"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "ryder-carrier.decline-load"
+          with:
+            loadId: "tools.loadId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: submit-load-event
+          description: "Submit a load event update (pickup, delivery, delay, exception)"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "ryder-carrier.create-load-event"
+          with:
+            loadId: "tools.loadId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: submit-location-update
+          description: "Submit a real-time vehicle location update for tracking"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "ryder-carrier.submit-location-update"
+          outputParameters:
+            - type: object
+              mapping: "$."

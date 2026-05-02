@@ -1,0 +1,159 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Ryder Fleet Operations"
+  description: >-
+    Unified workflow for fleet operations customers leasing and maintaining
+    commercial vehicles with Ryder. Enables fleet managers to view vehicle
+    specifications, track maintenance history, access service locations, and
+    manage invoices through a single interface.
+  tags:
+    - Fleet Management
+    - Invoices
+    - Locations
+    - Service History
+    - Transportation
+    - Vehicles
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      RYDER_FMS_API_KEY: RYDER_FMS_API_KEY
+
+capability:
+  consumes:
+    - import: ryder-fms
+      location: ./shared/fleet-management.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: ryder-fleet-ops-api
+      description: "Unified REST API for Ryder fleet operations management."
+      resources:
+        - path: /v1/fleet
+          name: fleet
+          description: "Fleet vehicle catalog"
+          operations:
+            - method: GET
+              name: list-fleet-vehicles
+              description: "List all vehicles in the fleet with specifications"
+              call: "ryder-fms.list-fleet-vehicles"
+              with:
+                page: "rest.query.page"
+                pageSize: "rest.query.pageSize"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/fleet/{vehicleId}
+          name: vehicle
+          description: "Single vehicle details"
+          operations:
+            - method: GET
+              name: get-vehicle
+              description: "Get detailed vehicle information and specifications"
+              call: "ryder-fms.get-vehicle"
+              with:
+                vehicleId: "rest.path.vehicleId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/fleet/{vehicleId}/service-history
+          name: service-history
+          description: "Vehicle service history"
+          operations:
+            - method: GET
+              name: get-service-history
+              description: "Get maintenance history for a specific vehicle"
+              call: "ryder-fms.get-service-history"
+              with:
+                vehicleId: "rest.path.vehicleId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/locations
+          name: locations
+          description: "Ryder service locations"
+          operations:
+            - method: GET
+              name: list-locations
+              description: "List Ryder service center locations with services and hours"
+              call: "ryder-fms.list-locations"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/invoices
+          name: invoices
+          description: "Fleet invoices"
+          operations:
+            - method: GET
+              name: list-invoices
+              description: "List fleet invoices with line items and payment status"
+              call: "ryder-fms.list-invoices"
+              with:
+                startDate: "rest.query.startDate"
+                endDate: "rest.query.endDate"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9080
+      namespace: ryder-fleet-ops-mcp
+      transport: http
+      description: "MCP server for AI-assisted Ryder fleet operations management."
+      tools:
+        - name: list-fleet-vehicles
+          description: "List all vehicles in the Ryder-managed fleet with specifications"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "ryder-fms.list-fleet-vehicles"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-vehicle
+          description: "Get detailed information and specifications for a specific fleet vehicle"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "ryder-fms.get-vehicle"
+          with:
+            vehicleId: "tools.vehicleId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-service-history
+          description: "Get maintenance and repair history for a specific fleet vehicle"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "ryder-fms.get-service-history"
+          with:
+            vehicleId: "tools.vehicleId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-locations
+          description: "List Ryder service center locations with available services and business hours"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "ryder-fms.list-locations"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-invoices
+          description: "List fleet invoices with line items, amounts, and payment status"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "ryder-fms.list-invoices"
+          with:
+            startDate: "tools.startDate"
+            endDate: "tools.endDate"
+          outputParameters:
+            - type: object
+              mapping: "$."
