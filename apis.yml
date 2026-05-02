@@ -136,6 +136,12 @@ common:
   - type: NaftikoCapabilities
     url: >-
       https://raw.githubusercontent.com/api-evangelist/ryder-system/refs/heads/main/capabilities/supply-chain-visibility.yaml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ryder-system/refs/heads/main/json-schema/ryder-vehicle-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/ryder-system/refs/heads/main/json-schema/ryder-shipment-schema.json
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
