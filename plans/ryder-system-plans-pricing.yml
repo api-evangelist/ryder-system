@@ -1,0 +1,38 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Ryder System
+providerId: ryder-system
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - Logistics / Fleet Management
+  - Enterprise
+  - B2B
+description: Ryder System does not publish public API pricing. Access is via partner/B2B contracts negotiated
+  through the provider's enterprise sales team. Ryder fleet management and logistics APIs offered to commercial
+  clients via Ryder Connect.
+sources:
+  - https://ryder.com/
+plans:
+  - id: ryder-system-partner
+    name: Partner / B2B Contract
+    type: enterprise
+    description: Custom pricing through enterprise sales / partner program.
+    entries:
+      - label: Annual contract (custom)
+        name: annual
+        type: subscription
+        metric: year
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: Negotiated contracts
+      - name: Volume discounts
+      - name: Service-level agreements
+      - name: Dedicated account team
