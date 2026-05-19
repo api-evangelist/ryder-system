@@ -1,0 +1,85 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ryder Fleet Management API — Invoices
+  description: 'Ryder Fleet Management API — Invoices. 1 operations. Lead operation: List Invoices. Self-contained Naftiko
+    capability covering one Ryder System business surface.'
+  tags:
+  - Ryder System
+  - Invoices
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RYDER_SYSTEM_API_KEY: RYDER_SYSTEM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ryder-fleet-management-invoices
+    baseUri: https://developer.ryder.com/fms/apis
+    description: Ryder Fleet Management API — Invoices business capability. Self-contained, no shared references.
+    resources:
+    - name: invoices
+      path: /invoices
+      operations:
+      - name: listinvoices
+        method: GET
+        description: List Invoices
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: startDate
+          in: query
+          type: string
+        - name: endDate
+          in: query
+          type: string
+    authentication:
+      type: apikey
+      key: Ocp-Apim-Subscription-Key
+      value: '{{env.RYDER_SYSTEM_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: ryder-fleet-management-invoices-rest
+    port: 8080
+    description: REST adapter for Ryder Fleet Management API — Invoices. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/invoices
+      name: invoices
+      description: REST surface for invoices.
+      operations:
+      - method: GET
+        name: listinvoices
+        description: List Invoices
+        call: ryder-fleet-management-invoices.listinvoices
+        with:
+          startDate: rest.startDate
+          endDate: rest.endDate
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ryder-fleet-management-invoices-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ryder Fleet Management API — Invoices. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-invoices
+      description: List Invoices
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ryder-fleet-management-invoices.listinvoices
+      with:
+        startDate: tools.startDate
+        endDate: tools.endDate
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,79 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ryder TM Shipment Management API — Ship Status
+  description: 'Ryder TM Shipment Management API — Ship Status. 1 operations. Lead operation: Get Shipment Status. Self-contained
+    Naftiko capability covering one Ryder System business surface.'
+  tags:
+  - Ryder System
+  - Ship Status
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RYDER_SYSTEM_API_KEY: RYDER_SYSTEM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ryder-tm-shipment-ship-status
+    baseUri: https://api.ryder.com/tmshipment/v1
+    description: Ryder TM Shipment Management API — Ship Status business capability. Self-contained, no shared references.
+    resources:
+    - name: ship-status-shipmentId
+      path: /ship-status/{shipmentId}
+      operations:
+      - name: getshipmentstatus
+        method: GET
+        description: Get Shipment Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: shipmentId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.RYDER_SYSTEM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: ryder-tm-shipment-ship-status-rest
+    port: 8080
+    description: REST adapter for Ryder TM Shipment Management API — Ship Status. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/ship-status/{shipmentid}
+      name: ship-status-shipmentid
+      description: REST surface for ship-status-shipmentId.
+      operations:
+      - method: GET
+        name: getshipmentstatus
+        description: Get Shipment Status
+        call: ryder-tm-shipment-ship-status.getshipmentstatus
+        with:
+          shipmentId: rest.shipmentId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ryder-tm-shipment-ship-status-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ryder TM Shipment Management API — Ship Status. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-shipment-status
+      description: Get Shipment Status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ryder-tm-shipment-ship-status.getshipmentstatus
+      with:
+        shipmentId: tools.shipmentId
+      outputParameters:
+      - type: object
+        mapping: $.

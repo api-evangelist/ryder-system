@@ -1,0 +1,81 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ryder Fleet Management API — Service History
+  description: 'Ryder Fleet Management API — Service History. 1 operations. Lead operation: Get Service History. Self-contained
+    Naftiko capability covering one Ryder System business surface.'
+  tags:
+  - Ryder System
+  - Service History
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RYDER_SYSTEM_API_KEY: RYDER_SYSTEM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ryder-fleet-management-service-history
+    baseUri: https://developer.ryder.com/fms/apis
+    description: Ryder Fleet Management API — Service History business capability. Self-contained, no shared references.
+    resources:
+    - name: fleet-vehicleId-service-history
+      path: /fleet/{vehicleId}/service-history
+      operations:
+      - name: getservicehistory
+        method: GET
+        description: Get Service History
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: vehicleId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: apikey
+      key: Ocp-Apim-Subscription-Key
+      value: '{{env.RYDER_SYSTEM_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: ryder-fleet-management-service-history-rest
+    port: 8080
+    description: REST adapter for Ryder Fleet Management API — Service History. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/fleet/{vehicleid}/service-history
+      name: fleet-vehicleid-service-history
+      description: REST surface for fleet-vehicleId-service-history.
+      operations:
+      - method: GET
+        name: getservicehistory
+        description: Get Service History
+        call: ryder-fleet-management-service-history.getservicehistory
+        with:
+          vehicleId: rest.vehicleId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ryder-fleet-management-service-history-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ryder Fleet Management API — Service History. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-service-history
+      description: Get Service History
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ryder-fleet-management-service-history.getservicehistory
+      with:
+        vehicleId: tools.vehicleId
+      outputParameters:
+      - type: object
+        mapping: $.
