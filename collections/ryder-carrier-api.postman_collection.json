@@ -1,0 +1,1048 @@
+{
+  "item": [
+    {
+      "id": "6e7e81a5-baea-430f-b0ac-726338e9173d",
+      "name": "Load Events",
+      "description": {
+        "content": "Load tender and event management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a5f6c0e0-3eec-4c52-9e8f-2ec401684ea8",
+          "name": "List Load Tenders",
+          "request": {
+            "name": "List Load Tenders",
+            "description": {
+              "content": "Retrieve a list of load tenders assigned to the carrier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "loads"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by load status"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b0693e79-3c77-4408-8bdf-fcea4efc0790",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"loads\": [\n    {\n      \"loadId\": \"string\",\n      \"status\": \"accepted\",\n      \"origin\": {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"zip\": \"string\",\n        \"latitude\": 6704.713526990073,\n        \"longitude\": 7463.897170610438\n      },\n      \"destination\": {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"zip\": \"string\",\n        \"latitude\": 7617.813518367342,\n        \"longitude\": 318.878101131328\n      },\n      \"pickupDate\": \"2017-10-19T21:24:53.864Z\",\n      \"deliveryDate\": \"1963-12-31T05:57:11.284Z\",\n      \"weight\": 4880.011460230638,\n      \"commodity\": \"string\",\n      \"driver\": {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      },\n      \"vehicle\": {\n        \"id\": \"string\",\n        \"type\": \"string\"\n      }\n    },\n    {\n      \"loadId\": \"string\",\n      \"status\": \"declined\",\n      \"origin\": {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"zip\": \"string\",\n        \"latitude\": 1849.4737878237577,\n        \"longitude\": 8428.774281794862\n      },\n      \"destination\": {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"zip\": \"string\",\n        \"latitude\": 6029.841433097283,\n        \"longitude\": 6818.057672341685\n      },\n      \"pickupDate\": \"2009-04-06T14:19:12.524Z\",\n      \"deliveryDate\": \"1978-03-06T06:09:55.666Z\",\n      \"weight\": 7746.974802463636,\n      \"commodity\": \"string\",\n      \"driver\": {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      },\n      \"vehicle\": {\n        \"id\": \"string\",\n        \"type\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32a5d5e5-e332-451e-816d-2575aa709b75",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5604eb74-4281-415c-ba6f-80a037a65dd4",
+          "name": "Get Load Details",
+          "request": {
+            "name": "Get Load Details",
+            "description": {
+              "content": "Retrieve detailed information for a specific load tender.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "loads",
+                ":loadId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "loadId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9b9887be-f591-49a4-be7f-99a890edeff0",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loads",
+                    ":loadId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loadId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"loadId\": \"string\",\n  \"status\": \"delivered\",\n  \"origin\": {\n    \"name\": \"string\",\n    \"address\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"latitude\": 2156.7199048176744,\n    \"longitude\": 9727.43584847027\n  },\n  \"destination\": {\n    \"name\": \"string\",\n    \"address\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"latitude\": 4965.676916114519,\n    \"longitude\": 457.3471572242849\n  },\n  \"pickupDate\": \"1991-05-04T16:38:44.590Z\",\n  \"deliveryDate\": \"2008-11-20T23:18:11.168Z\",\n  \"weight\": 7198.48575274298,\n  \"commodity\": \"string\",\n  \"driver\": {\n    \"id\": \"string\",\n    \"name\": \"string\"\n  },\n  \"vehicle\": {\n    \"id\": \"string\",\n    \"type\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "595b09c4-76aa-4d40-af1d-1e340f07270e",
+              "name": "Load not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loads",
+                    ":loadId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loadId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de5d3ac1-8b7a-4230-a493-d2a96378af13",
+          "name": "Accept Load Tender",
+          "request": {
+            "name": "Accept Load Tender",
+            "description": {
+              "content": "Accept a load tender from Ryder.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "loads",
+                ":loadId",
+                "accept"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "loadId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"driver_id\": \"<string>\",\n  \"vehicle_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1ab55c60-73a3-463e-be57-959c7b475c1b",
+              "name": "Load accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loads",
+                    ":loadId",
+                    "accept"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loadId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"driver_id\": \"<string>\",\n  \"vehicle_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b3cc3920-a3e0-4b62-8304-dcf940cce238",
+              "name": "Load not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loads",
+                    ":loadId",
+                    "accept"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loadId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"driver_id\": \"<string>\",\n  \"vehicle_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "70f4de5b-25b7-4d43-8856-86f7d8c7e445",
+          "name": "Decline Load Tender",
+          "request": {
+            "name": "Decline Load Tender",
+            "description": {
+              "content": "Decline a load tender from Ryder.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "loads",
+                ":loadId",
+                "decline"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "loadId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8b902d96-3f32-4f1d-8724-b14cdd6f9141",
+              "name": "Load declined",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loads",
+                    ":loadId",
+                    "decline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loadId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "22372f08-073d-4a7d-88d6-09a7b7c26949",
+          "name": "Submit Load Event",
+          "request": {
+            "name": "Submit Load Event",
+            "description": {
+              "content": "Submit an event update for a load, such as pickup confirmation, delivery milestone, or delay notification.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "loads",
+                ":loadId",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "loadId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event_type\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"location\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"latitude\": \"<double>\",\n    \"longitude\": \"<double>\"\n  },\n  \"notes\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3a67cc88-4294-41f5-ad10-40af8959c67b",
+              "name": "Event submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loads",
+                    ":loadId",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loadId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event_type\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"location\": {\n    \"name\": \"string\",\n    \"address\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"latitude\": 2246.5417946945977,\n    \"longitude\": 9146.746378462818\n  },\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f5e259c6-c860-4701-a9ea-7c9d400b9b39",
+              "name": "Invalid event data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loads",
+                    ":loadId",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loadId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event_type\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"location\": {\n    \"name\": \"string\",\n    \"address\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"latitude\": 2246.5417946945977,\n    \"longitude\": 9146.746378462818\n  },\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "8bb466e8-5105-44d2-9d65-735b6842d203",
+      "name": "Tracking",
+      "description": {
+        "content": "Vehicle and shipment location tracking",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f7f28fae-01d8-4032-afb5-53d8e07b11c4",
+          "name": "Submit Location Update",
+          "request": {
+            "name": "Submit Location Update",
+            "description": {
+              "content": "Submit a real-time vehicle location update for tracking purposes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tracking"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"load_id\": \"<string>\",\n  \"latitude\": \"<double>\",\n  \"longitude\": \"<double>\",\n  \"timestamp\": \"<dateTime>\",\n  \"vehicle_id\": \"<string>\",\n  \"speed\": \"<number>\",\n  \"heading\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9d8bb845-03cb-4986-b59b-c7ef2afb6d6d",
+              "name": "Location update accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tracking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"load_id\": \"<string>\",\n  \"latitude\": \"<double>\",\n  \"longitude\": \"<double>\",\n  \"timestamp\": \"<dateTime>\",\n  \"vehicle_id\": \"<string>\",\n  \"speed\": \"<number>\",\n  \"heading\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "25c882f3-d702-499e-91df-9177760480e7",
+      "name": "Documents",
+      "description": {
+        "content": "Document upload to RyderShare",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "97d89a2f-2203-439b-93dc-27d472a0dc42",
+          "name": "Upload Document",
+          "request": {
+            "name": "Upload Document",
+            "description": {
+              "content": "Upload a document (e.g., Bill of Lading, Proof of Delivery) to the RyderShare platform associated with a specific load.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "load_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "document_type",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required)  (This can only be one of bill_of_lading,proof_of_delivery,rate_confirmation,invoice)"
+                },
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a8c02142-42eb-4a9e-9b12-84e5f239b518",
+              "name": "Document uploaded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "load_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required)  (This can only be one of bill_of_lading,proof_of_delivery,rate_confirmation,invoice)",
+                        "type": "text/plain"
+                      },
+                      "key": "document_type",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"document_id\": \"string\",\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ryder.com/rcsc/events/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Ocp-Apim-Subscription-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fc64ef47-eee5-437f-a108-f968e1050068",
+    "name": "Ryder Carrier API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Ryder Carrier API enables carriers to push updates to Ryder for managing transportation, brokerage, and tracking services. Carriers can submit event updates for load tenders, milestones, and vehicle locations, and upload documents to the RyderShare platform. Authentication uses an API key provided in the Ocp-Apim-Subscription-Key header.\n\nContact Support:\n Name: Ryder Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

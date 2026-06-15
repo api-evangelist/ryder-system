@@ -1,0 +1,646 @@
+{
+  "item": [
+    {
+      "id": "3ae3e50c-9344-4e4a-b357-323f30ce2498",
+      "name": "Fleet",
+      "description": {
+        "content": "Fleet vehicle information and specifications",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "235ad514-4a81-48af-9419-1347d73a9fc4",
+          "name": "List Fleet Vehicles",
+          "request": {
+            "name": "List Fleet Vehicles",
+            "description": {
+              "content": "Retrieve a list of vehicles in the fleet, including vehicle information and specifications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fleet"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e974c88e-5d18-452f-bad2-b8b4e4652cf3",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fleet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vehicles\": [\n    {\n      \"vehicleId\": \"string\",\n      \"vin\": \"string\",\n      \"make\": \"string\",\n      \"model\": \"string\",\n      \"year\": 1618,\n      \"status\": \"string\",\n      \"mileage\": 2848\n    },\n    {\n      \"vehicleId\": \"string\",\n      \"vin\": \"string\",\n      \"make\": \"string\",\n      \"model\": \"string\",\n      \"year\": 8344,\n      \"status\": \"string\",\n      \"mileage\": 6365\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0348223b-baf4-4219-80a6-531094c9f155",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fleet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c124c91-e908-4a95-b4e1-da4438114317",
+          "name": "Get Vehicle Details",
+          "request": {
+            "name": "Get Vehicle Details",
+            "description": {
+              "content": "Retrieve detailed information about a specific vehicle.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fleet",
+                ":vehicleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vehicleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9a04d1d5-fa48-43e9-9a67-8a2466f19dd6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fleet",
+                    ":vehicleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vehicleId\": \"string\",\n  \"vin\": \"string\",\n  \"make\": \"string\",\n  \"model\": \"string\",\n  \"year\": 1527,\n  \"status\": \"string\",\n  \"mileage\": 6718\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62389fe5-8861-4d06-a837-a523a7532f98",
+              "name": "Vehicle not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fleet",
+                    ":vehicleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "addb8b48-73e0-4a5b-9c07-565d6ce04c4e",
+      "name": "Invoices",
+      "description": {
+        "content": "Invoice details and payment status",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ce539d9e-b0c8-445a-b946-8d918f2c2ec8",
+          "name": "List Invoices",
+          "request": {
+            "name": "List Invoices",
+            "description": {
+              "content": "Retrieve historical invoice details for the fleet, including line items, payment status, and customer-specific account details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c7e015f3-6ad6-4bab-8265-3b08860282d6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"invoices\": [\n    {\n      \"invoiceId\": \"string\",\n      \"date\": \"2019-05-16\",\n      \"amount\": 6405.682728982817,\n      \"status\": \"overdue\",\n      \"lineItems\": [\n        {\n          \"description\": \"string\",\n          \"amount\": 1911.589403637115\n        },\n        {\n          \"description\": \"string\",\n          \"amount\": 7437.237683321619\n        }\n      ]\n    },\n    {\n      \"invoiceId\": \"string\",\n      \"date\": \"1997-03-25\",\n      \"amount\": 3865.8226247856087,\n      \"status\": \"pending\",\n      \"lineItems\": [\n        {\n          \"description\": \"string\",\n          \"amount\": 9218.536443976967\n        },\n        {\n          \"description\": \"string\",\n          \"amount\": 4319.415267981812\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "58d3f4c0-2984-4f0d-9a98-7213ab8e2977",
+      "name": "Locations",
+      "description": {
+        "content": "Location information and service details",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a2add1ab-bf80-4222-b6e6-637c57e2976d",
+          "name": "List Locations",
+          "request": {
+            "name": "List Locations",
+            "description": {
+              "content": "Retrieve location information including address, services offered, business hours, and contact details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9ff13732-ca58-457c-bc2d-f290ec95a54e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"locations\": [\n    {\n      \"locationId\": \"string\",\n      \"name\": \"string\",\n      \"address\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"zip\": \"string\",\n      \"services\": [\n        \"string\",\n        \"string\"\n      ],\n      \"businessHours\": \"string\",\n      \"phone\": \"string\"\n    },\n    {\n      \"locationId\": \"string\",\n      \"name\": \"string\",\n      \"address\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"zip\": \"string\",\n      \"services\": [\n        \"string\",\n        \"string\"\n      ],\n      \"businessHours\": \"string\",\n      \"phone\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e1211283-2215-49e9-a71a-2abcac594817",
+      "name": "Service History",
+      "description": {
+        "content": "Historical maintenance records",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6dcb82fe-fbae-4a70-84f1-f2246c527ccb",
+          "name": "Get Service History",
+          "request": {
+            "name": "Get Service History",
+            "description": {
+              "content": "Retrieve historical maintenance records for a specific vehicle.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fleet",
+                ":vehicleId",
+                "service-history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vehicleId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "043b4496-20eb-46bf-ad32-e6d4a719635a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fleet",
+                    ":vehicleId",
+                    "service-history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vehicleId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"records\": [\n    {\n      \"recordId\": \"string\",\n      \"vehicleId\": \"string\",\n      \"serviceDate\": \"2021-04-07\",\n      \"description\": \"string\",\n      \"cost\": 7382.803263034606\n    },\n    {\n      \"recordId\": \"string\",\n      \"vehicleId\": \"string\",\n      \"serviceDate\": \"2000-08-12\",\n      \"description\": \"string\",\n      \"cost\": 9997.673926692909\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://developer.ryder.com/fms/apis",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Ocp-Apim-Subscription-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f4c380b7-feff-48f0-a66e-d59deea9ed25",
+    "name": "Ryder Fleet Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Ryder Fleet Management API enables seamless integration of fleet and location data into business systems. It provides access to Ryder fleet details including vehicle information and specifications, location data with address and service hours, historical maintenance records, and invoice details with line items and payment status.\n\nContact Support:\n Name: Ryder Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

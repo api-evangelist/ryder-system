@@ -1,0 +1,201 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ryder Carrier API",
+    "version": "2026-01-01"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Ocp-Apim-Subscription-Key",
+      "value": "{{Ocp-Apim-Subscription-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Load Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Load Tenders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ryder.com/rcsc/events/v1/loads",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by load status"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of load tenders assigned to the carrier."
+        },
+        {
+          "info": {
+            "name": "Get Load Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ryder.com/rcsc/events/v1/loads/:loadId",
+            "params": [
+              {
+                "name": "loadId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve detailed information for a specific load tender."
+        },
+        {
+          "info": {
+            "name": "Accept Load Tender",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ryder.com/rcsc/events/v1/loads/:loadId/accept",
+            "params": [
+              {
+                "name": "loadId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Accept a load tender from Ryder."
+        },
+        {
+          "info": {
+            "name": "Decline Load Tender",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ryder.com/rcsc/events/v1/loads/:loadId/decline",
+            "params": [
+              {
+                "name": "loadId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Decline a load tender from Ryder."
+        },
+        {
+          "info": {
+            "name": "Submit Load Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ryder.com/rcsc/events/v1/loads/:loadId/events",
+            "params": [
+              {
+                "name": "loadId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit an event update for a load, such as pickup confirmation, delivery milestone, or delay notification."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tracking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Submit Location Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ryder.com/rcsc/events/v1/tracking",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a real-time vehicle location update for tracking purposes."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Documents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ryder.com/rcsc/events/v1/documents",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "load_id",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "document_type",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Upload a document (e.g., Bill of Lading, Proof of Delivery) to the RyderShare platform associated with a specific load."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

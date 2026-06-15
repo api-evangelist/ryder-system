@@ -1,0 +1,1212 @@
+{
+  "item": [
+    {
+      "id": "54aa6931-8e1f-4774-9cae-fc25cb67947d",
+      "name": "Shipments",
+      "description": {
+        "content": "Shipment management operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cf3b752d-bb74-4b4b-84ed-e5d00abb3e21",
+          "name": "List Shipments",
+          "request": {
+            "name": "List Shipments",
+            "description": {
+              "content": "Retrieve a list of shipments with their current status and details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shipments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b8603cbf-368d-45f4-af26-ae529228d938",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"shipments\": [\n    {\n      \"shipmentId\": \"string\",\n      \"status\": \"cancelled\",\n      \"origin\": {\n        \"address\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"zip\": \"string\",\n        \"name\": \"string\",\n        \"country\": \"US\"\n      },\n      \"destination\": {\n        \"address\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"zip\": \"string\",\n        \"name\": \"string\",\n        \"country\": \"US\"\n      },\n      \"requestedPickupDate\": \"2020-12-22\",\n      \"requestedDeliveryDate\": \"1975-03-19\",\n      \"actualPickupDate\": \"1981-02-10T08:52:22.535Z\",\n      \"actualDeliveryDate\": \"1994-11-15T01:34:15.923Z\",\n      \"weight\": 5.1643933154410515,\n      \"commodityDescription\": \"string\",\n      \"loads\": [\n        {\n          \"loadId\": \"string\",\n          \"shipmentId\": \"string\",\n          \"status\": \"delivered\",\n          \"carrier\": \"string\",\n          \"vehicle\": \"string\",\n          \"driver\": \"string\",\n          \"pickupDate\": \"2016-12-26T08:34:35.093Z\",\n          \"deliveryDate\": \"1948-08-21T17:09:53.172Z\"\n        },\n        {\n          \"loadId\": \"string\",\n          \"shipmentId\": \"string\",\n          \"status\": \"in_transit\",\n          \"carrier\": \"string\",\n          \"vehicle\": \"string\",\n          \"driver\": \"string\",\n          \"pickupDate\": \"1973-03-15T12:48:03.755Z\",\n          \"deliveryDate\": \"2020-11-21T01:04:54.762Z\"\n        }\n      ],\n      \"createdAt\": \"1967-06-17T01:17:50.468Z\",\n      \"updatedAt\": \"1996-11-11T18:27:37.031Z\"\n    },\n    {\n      \"shipmentId\": \"string\",\n      \"status\": \"pending\",\n      \"origin\": {\n        \"address\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"zip\": \"string\",\n        \"name\": \"string\",\n        \"country\": \"US\"\n      },\n      \"destination\": {\n        \"address\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"zip\": \"string\",\n        \"name\": \"string\",\n        \"country\": \"US\"\n      },\n      \"requestedPickupDate\": \"1948-06-22\",\n      \"requestedDeliveryDate\": \"1959-02-27\",\n      \"actualPickupDate\": \"2019-01-13T13:31:59.578Z\",\n      \"actualDeliveryDate\": \"1979-11-05T15:13:24.928Z\",\n      \"weight\": 4076.1640094811514,\n      \"commodityDescription\": \"string\",\n      \"loads\": [\n        {\n          \"loadId\": \"string\",\n          \"shipmentId\": \"string\",\n          \"status\": \"delivered\",\n          \"carrier\": \"string\",\n          \"vehicle\": \"string\",\n          \"driver\": \"string\",\n          \"pickupDate\": \"2005-09-03T01:40:00.059Z\",\n          \"deliveryDate\": \"1978-11-12T22:17:06.408Z\"\n        },\n        {\n          \"loadId\": \"string\",\n          \"shipmentId\": \"string\",\n          \"status\": \"delivered\",\n          \"carrier\": \"string\",\n          \"vehicle\": \"string\",\n          \"driver\": \"string\",\n          \"pickupDate\": \"2012-05-21T20:00:42.446Z\",\n          \"deliveryDate\": \"1972-12-27T21:45:56.535Z\"\n        }\n      ],\n      \"createdAt\": \"1953-04-15T04:25:34.362Z\",\n      \"updatedAt\": \"1981-04-26T07:18:42.883Z\"\n    }\n  ],\n  \"totalCount\": 5620\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f65d9c4-5d20-4a8b-8c4d-e7ba0134369b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b63c664b-b768-4c9d-8301-5006b7e68dd4",
+          "name": "Create Shipment",
+          "request": {
+            "name": "Create Shipment",
+            "description": {
+              "content": "Submit a comprehensive and detailed description of shipment requirements as soon as they are available from the customer source system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shipments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"origin\": {\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"name\": \"<string>\",\n    \"country\": \"US\"\n  },\n  \"destination\": {\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"name\": \"<string>\",\n    \"country\": \"US\"\n  },\n  \"requestedPickupDate\": \"<date>\",\n  \"requestedDeliveryDate\": \"<date>\",\n  \"weight\": \"<number>\",\n  \"commodityDescription\": \"<string>\",\n  \"specialInstructions\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8a8280bb-639c-4959-a316-c2060c6a617a",
+              "name": "Shipment created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"origin\": {\n    \"address\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"name\": \"string\",\n    \"country\": \"US\"\n  },\n  \"destination\": {\n    \"address\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"name\": \"string\",\n    \"country\": \"US\"\n  },\n  \"requestedPickupDate\": \"<date>\",\n  \"requestedDeliveryDate\": \"<date>\",\n  \"weight\": \"<number>\",\n  \"commodityDescription\": \"<string>\",\n  \"specialInstructions\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"shipmentId\": \"string\",\n  \"status\": \"cancelled\",\n  \"origin\": {\n    \"address\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"name\": \"string\",\n    \"country\": \"US\"\n  },\n  \"destination\": {\n    \"address\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"name\": \"string\",\n    \"country\": \"US\"\n  },\n  \"requestedPickupDate\": \"2018-04-14\",\n  \"requestedDeliveryDate\": \"2003-10-21\",\n  \"actualPickupDate\": \"2021-05-12T00:40:18.177Z\",\n  \"actualDeliveryDate\": \"2003-08-29T07:27:18.525Z\",\n  \"weight\": 4317.11079327946,\n  \"commodityDescription\": \"string\",\n  \"loads\": [\n    {\n      \"loadId\": \"string\",\n      \"shipmentId\": \"string\",\n      \"status\": \"delivered\",\n      \"carrier\": \"string\",\n      \"vehicle\": \"string\",\n      \"driver\": \"string\",\n      \"pickupDate\": \"2024-12-18T10:05:48.174Z\",\n      \"deliveryDate\": \"1971-04-28T23:55:04.273Z\"\n    },\n    {\n      \"loadId\": \"string\",\n      \"shipmentId\": \"string\",\n      \"status\": \"assigned\",\n      \"carrier\": \"string\",\n      \"vehicle\": \"string\",\n      \"driver\": \"string\",\n      \"pickupDate\": \"1968-10-06T04:48:41.421Z\",\n      \"deliveryDate\": \"2004-11-02T17:08:09.874Z\"\n    }\n  ],\n  \"createdAt\": \"1967-01-21T18:42:51.220Z\",\n  \"updatedAt\": \"1968-12-26T22:24:02.655Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a1bf7564-3e7e-4dde-9b42-fbfcb8f5aa9b",
+              "name": "Invalid shipment data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"origin\": {\n    \"address\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"name\": \"string\",\n    \"country\": \"US\"\n  },\n  \"destination\": {\n    \"address\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"name\": \"string\",\n    \"country\": \"US\"\n  },\n  \"requestedPickupDate\": \"<date>\",\n  \"requestedDeliveryDate\": \"<date>\",\n  \"weight\": \"<number>\",\n  \"commodityDescription\": \"<string>\",\n  \"specialInstructions\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6fa4b8c-5314-4e1e-b092-89232707f91f",
+          "name": "Get Shipment",
+          "request": {
+            "name": "Get Shipment",
+            "description": {
+              "content": "Retrieve details for a specific shipment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shipments",
+                ":shipmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "shipmentId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "94968148-380f-4f4d-8052-7f988f856a22",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments",
+                    ":shipmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shipmentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"shipmentId\": \"string\",\n  \"status\": \"cancelled\",\n  \"origin\": {\n    \"address\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"name\": \"string\",\n    \"country\": \"US\"\n  },\n  \"destination\": {\n    \"address\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"name\": \"string\",\n    \"country\": \"US\"\n  },\n  \"requestedPickupDate\": \"2018-04-14\",\n  \"requestedDeliveryDate\": \"2003-10-21\",\n  \"actualPickupDate\": \"2021-05-12T00:40:18.177Z\",\n  \"actualDeliveryDate\": \"2003-08-29T07:27:18.525Z\",\n  \"weight\": 4317.11079327946,\n  \"commodityDescription\": \"string\",\n  \"loads\": [\n    {\n      \"loadId\": \"string\",\n      \"shipmentId\": \"string\",\n      \"status\": \"delivered\",\n      \"carrier\": \"string\",\n      \"vehicle\": \"string\",\n      \"driver\": \"string\",\n      \"pickupDate\": \"2024-12-18T10:05:48.174Z\",\n      \"deliveryDate\": \"1971-04-28T23:55:04.273Z\"\n    },\n    {\n      \"loadId\": \"string\",\n      \"shipmentId\": \"string\",\n      \"status\": \"assigned\",\n      \"carrier\": \"string\",\n      \"vehicle\": \"string\",\n      \"driver\": \"string\",\n      \"pickupDate\": \"1968-10-06T04:48:41.421Z\",\n      \"deliveryDate\": \"2004-11-02T17:08:09.874Z\"\n    }\n  ],\n  \"createdAt\": \"1967-01-21T18:42:51.220Z\",\n  \"updatedAt\": \"1968-12-26T22:24:02.655Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1729711d-7418-4052-874b-75a90466e034",
+              "name": "Shipment not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments",
+                    ":shipmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shipmentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d5ec7ac5-5c94-47e7-aca2-49a972fe278a",
+          "name": "Update Shipment",
+          "request": {
+            "name": "Update Shipment",
+            "description": {
+              "content": "Update shipment details or requirements.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shipments",
+                ":shipmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "shipmentId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requestedPickupDate\": \"<date>\",\n  \"requestedDeliveryDate\": \"<date>\",\n  \"weight\": \"<number>\",\n  \"commodityDescription\": \"<string>\",\n  \"specialInstructions\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "73b4de29-dced-4348-a536-019e6c68cf84",
+              "name": "Shipment updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments",
+                    ":shipmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shipmentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestedPickupDate\": \"<date>\",\n  \"requestedDeliveryDate\": \"<date>\",\n  \"weight\": \"<number>\",\n  \"commodityDescription\": \"<string>\",\n  \"specialInstructions\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"shipmentId\": \"string\",\n  \"status\": \"cancelled\",\n  \"origin\": {\n    \"address\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"name\": \"string\",\n    \"country\": \"US\"\n  },\n  \"destination\": {\n    \"address\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"name\": \"string\",\n    \"country\": \"US\"\n  },\n  \"requestedPickupDate\": \"2018-04-14\",\n  \"requestedDeliveryDate\": \"2003-10-21\",\n  \"actualPickupDate\": \"2021-05-12T00:40:18.177Z\",\n  \"actualDeliveryDate\": \"2003-08-29T07:27:18.525Z\",\n  \"weight\": 4317.11079327946,\n  \"commodityDescription\": \"string\",\n  \"loads\": [\n    {\n      \"loadId\": \"string\",\n      \"shipmentId\": \"string\",\n      \"status\": \"delivered\",\n      \"carrier\": \"string\",\n      \"vehicle\": \"string\",\n      \"driver\": \"string\",\n      \"pickupDate\": \"2024-12-18T10:05:48.174Z\",\n      \"deliveryDate\": \"1971-04-28T23:55:04.273Z\"\n    },\n    {\n      \"loadId\": \"string\",\n      \"shipmentId\": \"string\",\n      \"status\": \"assigned\",\n      \"carrier\": \"string\",\n      \"vehicle\": \"string\",\n      \"driver\": \"string\",\n      \"pickupDate\": \"1968-10-06T04:48:41.421Z\",\n      \"deliveryDate\": \"2004-11-02T17:08:09.874Z\"\n    }\n  ],\n  \"createdAt\": \"1967-01-21T18:42:51.220Z\",\n  \"updatedAt\": \"1968-12-26T22:24:02.655Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "feb86764-9e29-4b60-b2bc-36fd8684dbb6",
+      "name": "Loads",
+      "description": {
+        "content": "Load management within shipments",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a15f60a1-fae5-43c2-a5cf-aa9275a43a7a",
+          "name": "List Loads",
+          "request": {
+            "name": "List Loads",
+            "description": {
+              "content": "Retrieve a list of loads associated with shipments.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "loads"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "shipmentId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "10e7a68f-57e4-4536-978f-9540dc98dcc3",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "shipmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"loads\": [\n    {\n      \"loadId\": \"string\",\n      \"shipmentId\": \"string\",\n      \"status\": \"delivered\",\n      \"carrier\": \"string\",\n      \"vehicle\": \"string\",\n      \"driver\": \"string\",\n      \"pickupDate\": \"1969-02-20T12:08:31.387Z\",\n      \"deliveryDate\": \"2016-01-14T10:09:56.172Z\"\n    },\n    {\n      \"loadId\": \"string\",\n      \"shipmentId\": \"string\",\n      \"status\": \"assigned\",\n      \"carrier\": \"string\",\n      \"vehicle\": \"string\",\n      \"driver\": \"string\",\n      \"pickupDate\": \"1957-12-17T09:12:10.043Z\",\n      \"deliveryDate\": \"2016-07-05T07:05:47.475Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0d98fbbd-9b9d-40e1-bdd3-bc0bb22dba2e",
+          "name": "Get Load",
+          "request": {
+            "name": "Get Load",
+            "description": {
+              "content": "Retrieve details for a specific load.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "loads",
+                ":loadId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "loadId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a23e73d5-62bf-4733-8dc3-01f281060dda",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loads",
+                    ":loadId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loadId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"loadId\": \"string\",\n  \"shipmentId\": \"string\",\n  \"status\": \"assigned\",\n  \"carrier\": \"string\",\n  \"vehicle\": \"string\",\n  \"driver\": \"string\",\n  \"pickupDate\": \"2001-11-04T15:02:18.357Z\",\n  \"deliveryDate\": \"2020-10-06T07:56:46.212Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c93e5cd0-9561-4795-b453-fe39408fbdb2",
+              "name": "Load not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "loads",
+                    ":loadId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loadId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ecd46c7b-a249-4ebc-9284-5da0e6247e45",
+      "name": "Ship Confirmation",
+      "description": {
+        "content": "Shipment confirmation operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bec7a5b0-ae66-4b0c-8732-5e4a2e2a63ae",
+          "name": "Confirm Shipment",
+          "request": {
+            "name": "Confirm Shipment",
+            "description": {
+              "content": "Submit a ship confirmation with final shipment details once goods are shipped.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ship-confirmations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shipmentId\": \"<string>\",\n  \"actualShipDate\": \"<dateTime>\",\n  \"trackingNumber\": \"<string>\",\n  \"carrier\": \"<string>\",\n  \"weight\": \"<number>\",\n  \"lineItems\": [\n    {\n      \"sku\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"sku\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"description\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bfca2784-be2b-41c2-8c9f-c0214d8094c0",
+              "name": "Confirmation accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ship-confirmations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipmentId\": \"<string>\",\n  \"actualShipDate\": \"<dateTime>\",\n  \"trackingNumber\": \"<string>\",\n  \"carrier\": \"<string>\",\n  \"weight\": \"<number>\",\n  \"lineItems\": [\n    {\n      \"sku\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"sku\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"description\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "58761908-89b6-4ac5-a6c1-be041d99d080",
+              "name": "Invalid confirmation data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ship-confirmations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipmentId\": \"<string>\",\n  \"actualShipDate\": \"<dateTime>\",\n  \"trackingNumber\": \"<string>\",\n  \"carrier\": \"<string>\",\n  \"weight\": \"<number>\",\n  \"lineItems\": [\n    {\n      \"sku\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"sku\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"description\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "bcbc0678-c2bc-42b2-b62a-5b6af141d6ba",
+      "name": "Ship Status",
+      "description": {
+        "content": "Shipment status and tracking",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6c69818a-10ab-4ac5-b111-96d3f6efa344",
+          "name": "Get Shipment Status",
+          "request": {
+            "name": "Get Shipment Status",
+            "description": {
+              "content": "Retrieve the current status and tracking information for a shipment throughout its lifecycle.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ship-status",
+                ":shipmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "shipmentId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7c8be35e-6e34-4d98-83c1-6db7045feab1",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ship-status",
+                    ":shipmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shipmentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"shipmentId\": \"string\",\n  \"currentStatus\": \"string\",\n  \"lastEvent\": \"string\",\n  \"lastEventTime\": \"1949-11-05T11:24:27.582Z\",\n  \"currentLocation\": {\n    \"latitude\": 3501.4158879422484,\n    \"longitude\": 8268.806150927421,\n    \"description\": \"string\"\n  },\n  \"estimatedDelivery\": \"2001-01-09T17:45:01.381Z\",\n  \"events\": [\n    {\n      \"eventType\": \"string\",\n      \"timestamp\": \"2015-01-15T07:05:41.019Z\",\n      \"location\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"eventType\": \"string\",\n      \"timestamp\": \"1991-02-11T19:32:56.546Z\",\n      \"location\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd2aa453-b6ae-4de6-aa6b-6facf326f167",
+              "name": "Shipment not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ship-status",
+                    ":shipmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shipmentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ryder.com/tmshipment/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.okta.com/oauth2/v1/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "dd871b87-5e4f-4c79-95a3-5b085a952fb5",
+    "name": "Ryder TM Shipment Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Ryder TM Shipment Management API enables seamless integration for customers to manage shipments, loads, and tracking updates. Customers can submit shipment requirements, retrieve real-time shipment information throughout the lifecycle, and receive event notifications. Authentication uses OAuth 2.0 Client Credentials flow via Okta combined with an API subscription key.\n\nContact Support:\n Name: Ryder Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

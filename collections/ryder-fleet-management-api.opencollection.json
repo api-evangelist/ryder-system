@@ -1,0 +1,143 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ryder Fleet Management API",
+    "version": "2026-01-01"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Ocp-Apim-Subscription-Key",
+      "value": "{{Ocp-Apim-Subscription-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Fleet",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Fleet Vehicles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.ryder.com/fms/apis/fleet",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of vehicles in the fleet, including vehicle information and specifications."
+        },
+        {
+          "info": {
+            "name": "Get Vehicle Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.ryder.com/fms/apis/fleet/:vehicleId",
+            "params": [
+              {
+                "name": "vehicleId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve detailed information about a specific vehicle."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Locations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.ryder.com/fms/apis/locations"
+          },
+          "docs": "Retrieve location information including address, services offered, business hours, and contact details."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Service History",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Service History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.ryder.com/fms/apis/fleet/:vehicleId/service-history",
+            "params": [
+              {
+                "name": "vehicleId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve historical maintenance records for a specific vehicle."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Invoices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://developer.ryder.com/fms/apis/invoices",
+            "params": [
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve historical invoice details for the fleet, including line items, payment status, and customer-specific account details."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

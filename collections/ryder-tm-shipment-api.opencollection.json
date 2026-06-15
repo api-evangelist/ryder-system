@@ -1,0 +1,230 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ryder TM Shipment Management API",
+    "version": "2026-01-01"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.okta.com/oauth2/v1/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shipments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Shipments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ryder.com/tmshipment/v1/shipments",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of shipments with their current status and details."
+        },
+        {
+          "info": {
+            "name": "Create Shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ryder.com/tmshipment/v1/shipments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a comprehensive and detailed description of shipment requirements as soon as they are available from the customer source system."
+        },
+        {
+          "info": {
+            "name": "Get Shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ryder.com/tmshipment/v1/shipments/:shipmentId",
+            "params": [
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific shipment."
+        },
+        {
+          "info": {
+            "name": "Update Shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.ryder.com/tmshipment/v1/shipments/:shipmentId",
+            "params": [
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update shipment details or requirements."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Loads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Loads",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ryder.com/tmshipment/v1/loads",
+            "params": [
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of loads associated with shipments."
+        },
+        {
+          "info": {
+            "name": "Get Load",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ryder.com/tmshipment/v1/loads/:loadId",
+            "params": [
+              {
+                "name": "loadId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific load."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Ship Confirmation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Confirm Shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ryder.com/tmshipment/v1/ship-confirmations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a ship confirmation with final shipment details once goods are shipped."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Ship Status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Shipment Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ryder.com/tmshipment/v1/ship-status/:shipmentId",
+            "params": [
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the current status and tracking information for a shipment throughout its lifecycle."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
