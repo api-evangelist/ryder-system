@@ -1,0 +1,29 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/ryder-carrier-api-openapi.yml, openapi/ryder-fleet-management-api-openapi.yml,
+  openapi/ryder-tm-shipment-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  - oauth2
+  api_key_in:
+  - header
+  oauth2_flows:
+  - clientCredentials
+schemes:
+- name: apiKeyAuth
+  type: apiKey
+  in: header
+  parameter: Ocp-Apim-Subscription-Key
+  sources:
+  - openapi/ryder-carrier-api-openapi.yml
+  - openapi/ryder-fleet-management-api-openapi.yml
+  - openapi/ryder-tm-shipment-api-openapi.yml
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.okta.com/oauth2/v1/token
+    scopes: 0
+  sources:
+  - openapi/ryder-tm-shipment-api-openapi.yml
