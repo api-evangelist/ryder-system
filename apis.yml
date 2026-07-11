@@ -107,6 +107,12 @@ apis:
       - type: Documentation
         url: https://developer.ryder.com/scs/docs/3pa-load-tracking/overview
 common:
+  - type: Authentication
+    url: authentication/ryder-system-authentication.yml
+  - type: OAuthScopes
+    url: scopes/ryder-system-scopes.yml
+  - url: https://ryder.com/en-us/api/rssfeed/showrssfeed
+    type: Blog
   - type: GitHubOrganization
     url: https://github.com/ryder
   - type: LinkedIn
