@@ -1,0 +1,98 @@
+openapi: 3.1.0
+info:
+  title: Ryder Carrier Documents Fleet API
+  description: The Ryder Carrier API enables carriers to push updates to Ryder for managing transportation, brokerage, and tracking services. Carriers can submit event updates for load tenders, milestones, and vehicle locations, and upload documents to the RyderShare platform. Authentication uses an API key provided in the Ocp-Apim-Subscription-Key header.
+  version: '2026-01-01'
+  contact:
+    name: Ryder Developer Portal
+    url: https://developer.ryder.com
+servers:
+- url: https://api.ryder.com/rcsc/events/v1
+  description: Production
+- url: https://apiqa.ryder.com/rcsc/events/v1
+  description: Testing
+security:
+- apiKeyAuth: []
+tags:
+- name: Fleet
+  description: Fleet vehicle information and specifications
+paths:
+  /fleet:
+    get:
+      operationId: listFleetVehicles
+      summary: List Fleet Vehicles
+      description: Retrieve a list of vehicles in the fleet, including vehicle information and specifications.
+      tags:
+      - Fleet
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vehicles:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Vehicle'
+        '401':
+          description: Unauthorized
+  /fleet/{vehicleId}:
+    get:
+      operationId: getVehicle
+      summary: Get Vehicle Details
+      description: Retrieve detailed information about a specific vehicle.
+      tags:
+      - Fleet
+      parameters:
+      - name: vehicleId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vehicle'
+        '404':
+          description: Vehicle not found
+components:
+  schemas:
+    Vehicle:
+      type: object
+      properties:
+        vehicleId:
+          type: string
+        vin:
+          type: string
+        make:
+          type: string
+        model:
+          type: string
+        year:
+          type: integer
+        status:
+          type: string
+        mileage:
+          type: integer
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Ocp-Apim-Subscription-Key
+externalDocs:
+  description: Ryder Carrier API Documentation
+  url: https://developer.ryder.com/scs/docs/scs-carrier/overview

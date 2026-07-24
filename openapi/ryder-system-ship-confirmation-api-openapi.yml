@@ -1,0 +1,75 @@
+openapi: 3.1.0
+info:
+  title: Ryder Carrier Documents Ship Confirmation API
+  description: The Ryder Carrier API enables carriers to push updates to Ryder for managing transportation, brokerage, and tracking services. Carriers can submit event updates for load tenders, milestones, and vehicle locations, and upload documents to the RyderShare platform. Authentication uses an API key provided in the Ocp-Apim-Subscription-Key header.
+  version: '2026-01-01'
+  contact:
+    name: Ryder Developer Portal
+    url: https://developer.ryder.com
+servers:
+- url: https://api.ryder.com/rcsc/events/v1
+  description: Production
+- url: https://apiqa.ryder.com/rcsc/events/v1
+  description: Testing
+security:
+- apiKeyAuth: []
+tags:
+- name: Ship Confirmation
+  description: Shipment confirmation operations
+paths:
+  /ship-confirmations:
+    post:
+      operationId: confirmShipment
+      summary: Confirm Shipment
+      description: Submit a ship confirmation with final shipment details once goods are shipped.
+      tags:
+      - Ship Confirmation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShipConfirmation'
+      responses:
+        '200':
+          description: Confirmation accepted
+        '400':
+          description: Invalid confirmation data
+components:
+  schemas:
+    ShipConfirmation:
+      type: object
+      required:
+      - shipmentId
+      - actualShipDate
+      properties:
+        shipmentId:
+          type: string
+        actualShipDate:
+          type: string
+          format: date-time
+        trackingNumber:
+          type: string
+        carrier:
+          type: string
+        weight:
+          type: number
+        lineItems:
+          type: array
+          items:
+            type: object
+            properties:
+              sku:
+                type: string
+              quantity:
+                type: integer
+              description:
+                type: string
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Ocp-Apim-Subscription-Key
+externalDocs:
+  description: Ryder Carrier API Documentation
+  url: https://developer.ryder.com/scs/docs/scs-carrier/overview

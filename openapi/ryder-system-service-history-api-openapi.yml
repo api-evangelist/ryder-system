@@ -1,0 +1,69 @@
+openapi: 3.1.0
+info:
+  title: Ryder Carrier Documents Service History API
+  description: The Ryder Carrier API enables carriers to push updates to Ryder for managing transportation, brokerage, and tracking services. Carriers can submit event updates for load tenders, milestones, and vehicle locations, and upload documents to the RyderShare platform. Authentication uses an API key provided in the Ocp-Apim-Subscription-Key header.
+  version: '2026-01-01'
+  contact:
+    name: Ryder Developer Portal
+    url: https://developer.ryder.com
+servers:
+- url: https://api.ryder.com/rcsc/events/v1
+  description: Production
+- url: https://apiqa.ryder.com/rcsc/events/v1
+  description: Testing
+security:
+- apiKeyAuth: []
+tags:
+- name: Service History
+  description: Historical maintenance records
+paths:
+  /fleet/{vehicleId}/service-history:
+    get:
+      operationId: getServiceHistory
+      summary: Get Service History
+      description: Retrieve historical maintenance records for a specific vehicle.
+      tags:
+      - Service History
+      parameters:
+      - name: vehicleId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  records:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ServiceRecord'
+components:
+  schemas:
+    ServiceRecord:
+      type: object
+      properties:
+        recordId:
+          type: string
+        vehicleId:
+          type: string
+        serviceDate:
+          type: string
+          format: date
+        description:
+          type: string
+        cost:
+          type: number
+          format: double
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Ocp-Apim-Subscription-Key
+externalDocs:
+  description: Ryder Carrier API Documentation
+  url: https://developer.ryder.com/scs/docs/scs-carrier/overview

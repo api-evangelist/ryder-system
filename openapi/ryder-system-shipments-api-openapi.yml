@@ -1,0 +1,275 @@
+openapi: 3.1.0
+info:
+  title: Ryder Carrier Documents Shipments API
+  description: The Ryder Carrier API enables carriers to push updates to Ryder for managing transportation, brokerage, and tracking services. Carriers can submit event updates for load tenders, milestones, and vehicle locations, and upload documents to the RyderShare platform. Authentication uses an API key provided in the Ocp-Apim-Subscription-Key header.
+  version: '2026-01-01'
+  contact:
+    name: Ryder Developer Portal
+    url: https://developer.ryder.com
+servers:
+- url: https://api.ryder.com/rcsc/events/v1
+  description: Production
+- url: https://apiqa.ryder.com/rcsc/events/v1
+  description: Testing
+security:
+- apiKeyAuth: []
+tags:
+- name: Shipments
+  description: Shipment management operations
+paths:
+  /shipments:
+    get:
+      operationId: listShipments
+      summary: List Shipments
+      description: Retrieve a list of shipments with their current status and details.
+      tags:
+      - Shipments
+      parameters:
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - pending
+          - in_transit
+          - delivered
+          - cancelled
+      - name: startDate
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: endDate
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  shipments:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Shipment'
+                  totalCount:
+                    type: integer
+        '401':
+          description: Unauthorized
+    post:
+      operationId: createShipment
+      summary: Create Shipment
+      description: Submit a comprehensive and detailed description of shipment requirements as soon as they are available from the customer source system.
+      tags:
+      - Shipments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShipmentCreate'
+      responses:
+        '201':
+          description: Shipment created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+        '400':
+          description: Invalid shipment data
+  /shipments/{shipmentId}:
+    get:
+      operationId: getShipment
+      summary: Get Shipment
+      description: Retrieve details for a specific shipment.
+      tags:
+      - Shipments
+      parameters:
+      - name: shipmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+        '404':
+          description: Shipment not found
+    put:
+      operationId: updateShipment
+      summary: Update Shipment
+      description: Update shipment details or requirements.
+      tags:
+      - Shipments
+      parameters:
+      - name: shipmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShipmentUpdate'
+      responses:
+        '200':
+          description: Shipment updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+components:
+  schemas:
+    Shipment:
+      type: object
+      properties:
+        shipmentId:
+          type: string
+        status:
+          type: string
+          enum:
+          - pending
+          - in_transit
+          - delivered
+          - cancelled
+        origin:
+          $ref: '#/components/schemas/Address'
+        destination:
+          $ref: '#/components/schemas/Address'
+        requestedPickupDate:
+          type: string
+          format: date
+        requestedDeliveryDate:
+          type: string
+          format: date
+        actualPickupDate:
+          type: string
+          format: date-time
+        actualDeliveryDate:
+          type: string
+          format: date-time
+        weight:
+          type: number
+          description: Total weight in pounds
+        commodityDescription:
+          type: string
+        loads:
+          type: array
+          items:
+            $ref: '#/components/schemas/Load'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    ShipmentCreate:
+      type: object
+      required:
+      - origin
+      - destination
+      - requestedPickupDate
+      properties:
+        origin:
+          $ref: '#/components/schemas/Address'
+        destination:
+          $ref: '#/components/schemas/Address'
+        requestedPickupDate:
+          type: string
+          format: date
+        requestedDeliveryDate:
+          type: string
+          format: date
+        weight:
+          type: number
+        commodityDescription:
+          type: string
+        specialInstructions:
+          type: string
+    Load:
+      type: object
+      properties:
+        loadId:
+          type: string
+        shipmentId:
+          type: string
+        status:
+          type: string
+          enum:
+          - assigned
+          - in_transit
+          - delivered
+        carrier:
+          type: string
+        vehicle:
+          type: string
+        driver:
+          type: string
+        pickupDate:
+          type: string
+          format: date-time
+        deliveryDate:
+          type: string
+          format: date-time
+    ShipmentUpdate:
+      type: object
+      properties:
+        requestedPickupDate:
+          type: string
+          format: date
+        requestedDeliveryDate:
+          type: string
+          format: date
+        weight:
+          type: number
+        commodityDescription:
+          type: string
+        specialInstructions:
+          type: string
+    Address:
+      type: object
+      required:
+      - address
+      - city
+      - state
+      - zip
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        country:
+          type: string
+          default: US
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Ocp-Apim-Subscription-Key
+externalDocs:
+  description: Ryder Carrier API Documentation
+  url: https://developer.ryder.com/scs/docs/scs-carrier/overview

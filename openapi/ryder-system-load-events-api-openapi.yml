@@ -1,0 +1,251 @@
+openapi: 3.1.0
+info:
+  title: Ryder Carrier Documents Load Events API
+  description: The Ryder Carrier API enables carriers to push updates to Ryder for managing transportation, brokerage, and tracking services. Carriers can submit event updates for load tenders, milestones, and vehicle locations, and upload documents to the RyderShare platform. Authentication uses an API key provided in the Ocp-Apim-Subscription-Key header.
+  version: '2026-01-01'
+  contact:
+    name: Ryder Developer Portal
+    url: https://developer.ryder.com
+servers:
+- url: https://api.ryder.com/rcsc/events/v1
+  description: Production
+- url: https://apiqa.ryder.com/rcsc/events/v1
+  description: Testing
+security:
+- apiKeyAuth: []
+tags:
+- name: Load Events
+  description: Load tender and event management
+paths:
+  /loads:
+    get:
+      operationId: listLoads
+      summary: List Load Tenders
+      description: Retrieve a list of load tenders assigned to the carrier.
+      tags:
+      - Load Events
+      parameters:
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - pending
+          - accepted
+          - declined
+          - in_transit
+          - delivered
+        description: Filter by load status
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  loads:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Load'
+        '401':
+          description: Unauthorized
+  /loads/{loadId}:
+    get:
+      operationId: getLoad
+      summary: Get Load Details
+      description: Retrieve detailed information for a specific load tender.
+      tags:
+      - Load Events
+      parameters:
+      - name: loadId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Load'
+        '404':
+          description: Load not found
+  /loads/{loadId}/accept:
+    post:
+      operationId: acceptLoad
+      summary: Accept Load Tender
+      description: Accept a load tender from Ryder.
+      tags:
+      - Load Events
+      parameters:
+      - name: loadId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                driver_id:
+                  type: string
+                vehicle_id:
+                  type: string
+      responses:
+        '200':
+          description: Load accepted
+        '404':
+          description: Load not found
+  /loads/{loadId}/decline:
+    post:
+      operationId: declineLoad
+      summary: Decline Load Tender
+      description: Decline a load tender from Ryder.
+      tags:
+      - Load Events
+      parameters:
+      - name: loadId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+      responses:
+        '200':
+          description: Load declined
+  /loads/{loadId}/events:
+    post:
+      operationId: createLoadEvent
+      summary: Submit Load Event
+      description: Submit an event update for a load, such as pickup confirmation, delivery milestone, or delay notification.
+      tags:
+      - Load Events
+      parameters:
+      - name: loadId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoadEventCreate'
+      responses:
+        '200':
+          description: Event submitted
+        '400':
+          description: Invalid event data
+components:
+  schemas:
+    Location:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+    Load:
+      type: object
+      properties:
+        loadId:
+          type: string
+        status:
+          type: string
+          enum:
+          - pending
+          - accepted
+          - declined
+          - in_transit
+          - delivered
+        origin:
+          $ref: '#/components/schemas/Location'
+        destination:
+          $ref: '#/components/schemas/Location'
+        pickupDate:
+          type: string
+          format: date-time
+        deliveryDate:
+          type: string
+          format: date-time
+        weight:
+          type: number
+          description: Weight in pounds
+        commodity:
+          type: string
+        driver:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+        vehicle:
+          type: object
+          properties:
+            id:
+              type: string
+            type:
+              type: string
+    LoadEventCreate:
+      type: object
+      required:
+      - event_type
+      - timestamp
+      properties:
+        event_type:
+          type: string
+          enum:
+          - pickup_arrived
+          - pickup_completed
+          - delivery_arrived
+          - delivery_completed
+          - delay
+          - exception
+        timestamp:
+          type: string
+          format: date-time
+        location:
+          $ref: '#/components/schemas/Location'
+        notes:
+          type: string
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Ocp-Apim-Subscription-Key
+externalDocs:
+  description: Ryder Carrier API Documentation
+  url: https://developer.ryder.com/scs/docs/scs-carrier/overview

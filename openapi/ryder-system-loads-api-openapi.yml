@@ -1,0 +1,112 @@
+openapi: 3.1.0
+info:
+  title: Ryder Carrier Documents Loads API
+  description: The Ryder Carrier API enables carriers to push updates to Ryder for managing transportation, brokerage, and tracking services. Carriers can submit event updates for load tenders, milestones, and vehicle locations, and upload documents to the RyderShare platform. Authentication uses an API key provided in the Ocp-Apim-Subscription-Key header.
+  version: '2026-01-01'
+  contact:
+    name: Ryder Developer Portal
+    url: https://developer.ryder.com
+servers:
+- url: https://api.ryder.com/rcsc/events/v1
+  description: Production
+- url: https://apiqa.ryder.com/rcsc/events/v1
+  description: Testing
+security:
+- apiKeyAuth: []
+tags:
+- name: Loads
+  description: Load management within shipments
+paths:
+  /loads:
+    get:
+      operationId: listLoads
+      summary: List Loads
+      description: Retrieve a list of loads associated with shipments.
+      tags:
+      - Loads
+      parameters:
+      - name: shipmentId
+        in: query
+        schema:
+          type: string
+      - name: status
+        in: query
+        schema:
+          type: string
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  loads:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Load'
+  /loads/{loadId}:
+    get:
+      operationId: getLoad
+      summary: Get Load
+      description: Retrieve details for a specific load.
+      tags:
+      - Loads
+      parameters:
+      - name: loadId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Load'
+        '404':
+          description: Load not found
+components:
+  schemas:
+    Load:
+      type: object
+      properties:
+        loadId:
+          type: string
+        shipmentId:
+          type: string
+        status:
+          type: string
+          enum:
+          - assigned
+          - in_transit
+          - delivered
+        carrier:
+          type: string
+        vehicle:
+          type: string
+        driver:
+          type: string
+        pickupDate:
+          type: string
+          format: date-time
+        deliveryDate:
+          type: string
+          format: date-time
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Ocp-Apim-Subscription-Key
+externalDocs:
+  description: Ryder Carrier API Documentation
+  url: https://developer.ryder.com/scs/docs/scs-carrier/overview
