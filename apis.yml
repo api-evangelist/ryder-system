@@ -7,7 +7,20 @@ description: >-
   lease, rent, and maintain vehicles, while the Supply Chain Solutions APIs support carrier management, load tracking,
   shipment management, and last-mile delivery operations.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/ryder-system.png
 tags:
   - Fleet Management
   - Logistics
@@ -20,92 +33,230 @@ created: '2026-03-21'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: ryder-system:fleet-management-api
-    name: Ryder Fleet Management API
-    description: >-
-      The Ryder Fleet Management API (FMS) enables seamless integration of fleet and location data into business
-      systems. It provides access to Ryder fleet details including vehicle information and specifications, location data
-      with address and service hours, historical maintenance records, and invoice details with line items and payment
-      status. Requires API key authentication via the Ocp-Apim-Subscription-Key header.
-    humanURL: https://developer.ryder.com/fms/overview
-    baseURL: https://developer.ryder.com/fms/apis
-    tags:
-      - Fleet Management
-      - Invoices
-      - Locations
-      - Service History
-      - Vehicles
-    properties:
-      - type: Documentation
-        url: https://developer.ryder.com/fms/docs/fms-fleet-api/overview
-      - type: GettingStarted
-        url: https://developer.ryder.com/fms/docs/fms-fleet-api/getting-started
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/ryder-system/refs/heads/main/openapi/ryder-fleet-management-api-openapi.yml
-  - aid: ryder-system:carrier-api
-    name: Ryder Carrier API
-    description: >-
-      The Ryder Carrier API enables carriers to push updates to Ryder for managing transportation, brokerage, and
-      tracking services. It supports resource assignment and tracking for load tenders, event updates for load events
-      and milestones, vehicle locations, and document uploads to the RyderShare platform.
-    humanURL: https://developer.ryder.com/scs/docs/scs-carrier/overview
-    baseURL: https://api.ryder.com/rcsc/events/v1
-    tags:
-      - Carrier Management
-      - Load Tracking
-      - Supply Chain
-      - Transportation
-    properties:
-      - type: Documentation
-        url: https://developer.ryder.com/scs/docs/scs-carrier/overview
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/ryder-system/refs/heads/main/openapi/ryder-carrier-api-openapi.yml
-  - aid: ryder-system:tm-shipment-api
-    name: Ryder TM Shipment Management API
-    description: >-
-      The Ryder TM Shipment Management API enables seamless integration for customers to manage shipments, loads, and
-      tracking updates. It uses OAuth 2.0 Client Credentials flow via Okta combined with an API subscription key.
-      Supports Shipment, Load, Ship Confirmation, Ship Status, and Event Notifications.
-    humanURL: https://developer.ryder.com/scs/docs/tm-shipment-management/overview
-    baseURL: https://api.ryder.com/tmshipment/v1
-    tags:
-      - Shipment Management
-      - Supply Chain
-      - Transportation
-    properties:
-      - type: Documentation
-        url: https://developer.ryder.com/scs/docs/tm-shipment-management/overview
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/ryder-system/refs/heads/main/openapi/ryder-tm-shipment-api-openapi.yml
-  - aid: ryder-system:last-mile-api
-    name: Ryder Last Mile API
-    description: >-
-      The Ryder Last Mile API handles last-mile delivery operations, enabling integration with Ryder's last-mile
-      delivery network for e-commerce fulfillment and parcel delivery management.
-    humanURL: https://developer.ryder.com/scs/docs/ryder-last-mile/overview
-    tags:
-      - E-Commerce
-      - Last Mile Delivery
-      - Supply Chain
-    properties:
-      - type: Documentation
-        url: https://developer.ryder.com/scs/docs/ryder-last-mile/overview
-  - aid: ryder-system:3pa-load-tracking-api
-    name: Ryder 3PA Load Tracking API
-    description: >-
-      The Ryder 3PA Load Tracking API provides third-party logistics load tracking functionality, enabling visibility
-      into load status and location throughout the shipment lifecycle.
-    humanURL: https://developer.ryder.com/scs/docs/3pa-load-tracking/overview
-    tags:
-      - Load Tracking
-      - Logistics
-      - Supply Chain
-    properties:
-      - type: Documentation
-        url: https://developer.ryder.com/scs/docs/3pa-load-tracking/overview
+- aid: ryder-system:last-mile-api
+  name: Ryder Last Mile API
+  description: >-
+    The Ryder Last Mile API handles last-mile delivery operations, enabling integration with Ryder's last-mile
+    delivery network for e-commerce fulfillment and parcel delivery management.
+  humanURL: https://developer.ryder.com/scs/docs/ryder-last-mile/overview
+  tags:
+  - E-Commerce
+  - Last Mile Delivery
+  - Supply Chain
+  properties:
+  - type: Documentation
+    url: https://developer.ryder.com/scs/docs/ryder-last-mile/overview
+- aid: ryder-system:3pa-load-tracking-api
+  name: Ryder 3PA Load Tracking API
+  description: >-
+    The Ryder 3PA Load Tracking API provides third-party logistics load tracking functionality, enabling
+    visibility into load status and location throughout the shipment lifecycle.
+  humanURL: https://developer.ryder.com/scs/docs/3pa-load-tracking/overview
+  tags:
+  - Load Tracking
+  - Logistics
+  - Supply Chain
+  properties:
+  - type: Documentation
+    url: https://developer.ryder.com/scs/docs/3pa-load-tracking/overview
+- aid: ryder-system:ryder-system-documents-api
+  name: Ryder System Documents API
+  description: Document upload to RyderShare
+  humanURL: https://developer.ryder.com/fms/overview
+  baseURL: https://developer.ryder.com/fms/apis
+  tags:
+  - Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/ryder-system-documents-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ryder.com/fms/docs/fms-fleet-api/overview
+  - type: GettingStarted
+    url: https://developer.ryder.com/fms/docs/fms-fleet-api/getting-started
+  - type: Documentation
+    url: https://developer.ryder.com/scs/docs/scs-carrier/overview
+  - type: Documentation
+    url: https://developer.ryder.com/scs/docs/tm-shipment-management/overview
+- aid: ryder-system:ryder-system-fleet-api
+  name: Ryder System Fleet API
+  description: Fleet vehicle information and specifications
+  humanURL: https://developer.ryder.com/fms/overview
+  baseURL: https://developer.ryder.com/fms/apis
+  tags:
+  - Fleet
+  properties:
+  - type: OpenAPI
+    url: openapi/ryder-system-fleet-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ryder.com/fms/docs/fms-fleet-api/overview
+  - type: GettingStarted
+    url: https://developer.ryder.com/fms/docs/fms-fleet-api/getting-started
+  - type: Documentation
+    url: https://developer.ryder.com/scs/docs/scs-carrier/overview
+  - type: Documentation
+    url: https://developer.ryder.com/scs/docs/tm-shipment-management/overview
+- aid: ryder-system:ryder-system-invoices-api
+  name: Ryder System Invoices API
+  description: Invoice details and payment status
+  humanURL: https://developer.ryder.com/fms/overview
+  baseURL: https://developer.ryder.com/fms/apis
+  tags:
+  - Invoices
+  properties:
+  - type: OpenAPI
+    url: openapi/ryder-system-invoices-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ryder.com/fms/docs/fms-fleet-api/overview
+  - type: GettingStarted
+    url: https://developer.ryder.com/fms/docs/fms-fleet-api/getting-started
+  - type: Documentation
+    url: https://developer.ryder.com/scs/docs/scs-carrier/overview
+  - type: Documentation
+    url: https://developer.ryder.com/scs/docs/tm-shipment-management/overview
+- aid: ryder-system:ryder-system-load-events-api
+  name: Ryder System Load Events API
+  description: Load tender and event management
+  humanURL: https://developer.ryder.com/fms/overview
+  baseURL: https://developer.ryder.com/fms/apis
+  tags:
+  - Load Events
+  properties:
+  - type: OpenAPI
+    url: openapi/ryder-system-load-events-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ryder.com/fms/docs/fms-fleet-api/overview
+  - type: GettingStarted
+    url: https://developer.ryder.com/fms/docs/fms-fleet-api/getting-started
+  - type: Documentation
+    url: https://developer.ryder.com/scs/docs/scs-carrier/overview
+  - type: Documentation
+    url: https://developer.ryder.com/scs/docs/tm-shipment-management/overview
+- aid: ryder-system:ryder-system-loads-api
+  name: Ryder System Loads API
+  description: Load management within shipments
+  humanURL: https://developer.ryder.com/fms/overview
+  baseURL: https://developer.ryder.com/fms/apis
+  tags:
+  - Loads
+  properties:
+  - type: OpenAPI
+    url: openapi/ryder-system-loads-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ryder.com/fms/docs/fms-fleet-api/overview
+  - type: GettingStarted
+    url: https://developer.ryder.com/fms/docs/fms-fleet-api/getting-started
+  - type: Documentation
+    url: https://developer.ryder.com/scs/docs/scs-carrier/overview
+  - type: Documentation
+    url: https://developer.ryder.com/scs/docs/tm-shipment-management/overview
+- aid: ryder-system:ryder-system-locations-api
+  name: Ryder System Locations API
+  description: Location information and service details
+  humanURL: https://developer.ryder.com/fms/overview
+  baseURL: https://developer.ryder.com/fms/apis
+  tags:
+  - Locations
+  properties:
+  - type: OpenAPI
+    url: openapi/ryder-system-locations-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ryder.com/fms/docs/fms-fleet-api/overview
+  - type: GettingStarted
+    url: https://developer.ryder.com/fms/docs/fms-fleet-api/getting-started
+  - type: Documentation
+    url: https://developer.ryder.com/scs/docs/scs-carrier/overview
+  - type: Documentation
+    url: https://developer.ryder.com/scs/docs/tm-shipment-management/overview
+- aid: ryder-system:ryder-system-service-history-api
+  name: Ryder System Service History API
+  description: Historical maintenance records
+  humanURL: https://developer.ryder.com/fms/overview
+  baseURL: https://developer.ryder.com/fms/apis
+  tags:
+  - Service History
+  properties:
+  - type: OpenAPI
+    url: openapi/ryder-system-service-history-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ryder.com/fms/docs/fms-fleet-api/overview
+  - type: GettingStarted
+    url: https://developer.ryder.com/fms/docs/fms-fleet-api/getting-started
+  - type: Documentation
+    url: https://developer.ryder.com/scs/docs/scs-carrier/overview
+  - type: Documentation
+    url: https://developer.ryder.com/scs/docs/tm-shipment-management/overview
+- aid: ryder-system:ryder-system-ship-confirmation-api
+  name: Ryder System Ship Confirmation API
+  description: Shipment confirmation operations
+  humanURL: https://developer.ryder.com/fms/overview
+  baseURL: https://developer.ryder.com/fms/apis
+  tags:
+  - Ship Confirmation
+  properties:
+  - type: OpenAPI
+    url: openapi/ryder-system-ship-confirmation-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ryder.com/fms/docs/fms-fleet-api/overview
+  - type: GettingStarted
+    url: https://developer.ryder.com/fms/docs/fms-fleet-api/getting-started
+  - type: Documentation
+    url: https://developer.ryder.com/scs/docs/scs-carrier/overview
+  - type: Documentation
+    url: https://developer.ryder.com/scs/docs/tm-shipment-management/overview
+- aid: ryder-system:ryder-system-ship-status-api
+  name: Ryder System Ship Status API
+  description: Shipment status and tracking
+  humanURL: https://developer.ryder.com/fms/overview
+  baseURL: https://developer.ryder.com/fms/apis
+  tags:
+  - Ship Status
+  properties:
+  - type: OpenAPI
+    url: openapi/ryder-system-ship-status-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ryder.com/fms/docs/fms-fleet-api/overview
+  - type: GettingStarted
+    url: https://developer.ryder.com/fms/docs/fms-fleet-api/getting-started
+  - type: Documentation
+    url: https://developer.ryder.com/scs/docs/scs-carrier/overview
+  - type: Documentation
+    url: https://developer.ryder.com/scs/docs/tm-shipment-management/overview
+- aid: ryder-system:ryder-system-shipments-api
+  name: Ryder System Shipments API
+  description: Shipment management operations
+  humanURL: https://developer.ryder.com/fms/overview
+  baseURL: https://developer.ryder.com/fms/apis
+  tags:
+  - Shipments
+  properties:
+  - type: OpenAPI
+    url: openapi/ryder-system-shipments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ryder.com/fms/docs/fms-fleet-api/overview
+  - type: GettingStarted
+    url: https://developer.ryder.com/fms/docs/fms-fleet-api/getting-started
+  - type: Documentation
+    url: https://developer.ryder.com/scs/docs/scs-carrier/overview
+  - type: Documentation
+    url: https://developer.ryder.com/scs/docs/tm-shipment-management/overview
+- aid: ryder-system:ryder-system-tracking-api
+  name: Ryder System Tracking API
+  description: Vehicle and shipment location tracking
+  humanURL: https://developer.ryder.com/fms/overview
+  baseURL: https://developer.ryder.com/fms/apis
+  tags:
+  - Tracking
+  properties:
+  - type: OpenAPI
+    url: openapi/ryder-system-tracking-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ryder.com/fms/docs/fms-fleet-api/overview
+  - type: GettingStarted
+    url: https://developer.ryder.com/fms/docs/fms-fleet-api/getting-started
+  - type: Documentation
+    url: https://developer.ryder.com/scs/docs/scs-carrier/overview
+  - type: Documentation
+    url: https://developer.ryder.com/scs/docs/tm-shipment-management/overview
 common:
   - type: AgenticAccess
     url: agentic-access/ryder-system-agentic-access.yml
