@@ -1,0 +1,462 @@
+openapi: 3.1.0
+info:
+  title: Ryder TM Shipment Management API
+  description: >-
+    The Ryder TM Shipment Management API enables seamless integration for customers
+    to manage shipments, loads, and tracking updates. Customers can submit shipment
+    requirements, retrieve real-time shipment information throughout the lifecycle,
+    and receive event notifications. Authentication uses OAuth 2.0 Client Credentials
+    flow via Okta combined with an API subscription key.
+  version: '2026-01-01'
+  contact:
+    name: Ryder Developer Portal
+    url: https://developer.ryder.com
+externalDocs:
+  description: Ryder TM Shipment Management API Documentation
+  url: https://developer.ryder.com/scs/docs/tm-shipment-management/overview
+servers:
+  - url: https://api.ryder.com/tmshipment/v1
+    description: Production
+  - url: https://apiqa.ryder.com/tmshipment/v1
+    description: Testing
+security:
+  - oauth2: []
+  - apiKeyAuth: []
+tags:
+  - name: Shipments
+    description: Shipment management operations
+  - name: Loads
+    description: Load management within shipments
+  - name: Ship Confirmation
+    description: Shipment confirmation operations
+  - name: Ship Status
+    description: Shipment status and tracking
+paths:
+  /shipments:
+    get:
+      operationId: listShipments
+      summary: List Shipments
+      description: >-
+        Retrieve a list of shipments with their current status and details.
+      tags:
+        - Shipments
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum:
+              - pending
+              - in_transit
+              - delivered
+              - cancelled
+        - name: startDate
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: page
+          in: query
+          schema:
+            type: integer
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  shipments:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Shipment'
+                  totalCount:
+                    type: integer
+        '401':
+          description: Unauthorized
+    post:
+      operationId: createShipment
+      summary: Create Shipment
+      description: >-
+        Submit a comprehensive and detailed description of shipment requirements
+        as soon as they are available from the customer source system.
+      tags:
+        - Shipments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShipmentCreate'
+      responses:
+        '201':
+          description: Shipment created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+        '400':
+          description: Invalid shipment data
+  /shipments/{shipmentId}:
+    get:
+      operationId: getShipment
+      summary: Get Shipment
+      description: Retrieve details for a specific shipment.
+      tags:
+        - Shipments
+      parameters:
+        - name: shipmentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+        '404':
+          description: Shipment not found
+    put:
+      operationId: updateShipment
+      summary: Update Shipment
+      description: Update shipment details or requirements.
+      tags:
+        - Shipments
+      parameters:
+        - name: shipmentId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShipmentUpdate'
+      responses:
+        '200':
+          description: Shipment updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+  /loads:
+    get:
+      operationId: listLoads
+      summary: List Loads
+      description: Retrieve a list of loads associated with shipments.
+      tags:
+        - Loads
+      parameters:
+        - name: shipmentId
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  loads:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Load'
+  /loads/{loadId}:
+    get:
+      operationId: getLoad
+      summary: Get Load
+      description: Retrieve details for a specific load.
+      tags:
+        - Loads
+      parameters:
+        - name: loadId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Load'
+        '404':
+          description: Load not found
+  /ship-confirmations:
+    post:
+      operationId: confirmShipment
+      summary: Confirm Shipment
+      description: Submit a ship confirmation with final shipment details once goods are shipped.
+      tags:
+        - Ship Confirmation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShipConfirmation'
+      responses:
+        '200':
+          description: Confirmation accepted
+        '400':
+          description: Invalid confirmation data
+  /ship-status/{shipmentId}:
+    get:
+      operationId: getShipmentStatus
+      summary: Get Shipment Status
+      description: >-
+        Retrieve the current status and tracking information for a shipment
+        throughout its lifecycle.
+      tags:
+        - Ship Status
+      parameters:
+        - name: shipmentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShipmentStatus'
+        '404':
+          description: Shipment not found
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.okta.com/oauth2/v1/token
+          scopes: {}
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Ocp-Apim-Subscription-Key
+  schemas:
+    Shipment:
+      type: object
+      properties:
+        shipmentId:
+          type: string
+        status:
+          type: string
+          enum:
+            - pending
+            - in_transit
+            - delivered
+            - cancelled
+        origin:
+          $ref: '#/components/schemas/Address'
+        destination:
+          $ref: '#/components/schemas/Address'
+        requestedPickupDate:
+          type: string
+          format: date
+        requestedDeliveryDate:
+          type: string
+          format: date
+        actualPickupDate:
+          type: string
+          format: date-time
+        actualDeliveryDate:
+          type: string
+          format: date-time
+        weight:
+          type: number
+          description: Total weight in pounds
+        commodityDescription:
+          type: string
+        loads:
+          type: array
+          items:
+            $ref: '#/components/schemas/Load'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    ShipmentCreate:
+      type: object
+      required:
+        - origin
+        - destination
+        - requestedPickupDate
+      properties:
+        origin:
+          $ref: '#/components/schemas/Address'
+        destination:
+          $ref: '#/components/schemas/Address'
+        requestedPickupDate:
+          type: string
+          format: date
+        requestedDeliveryDate:
+          type: string
+          format: date
+        weight:
+          type: number
+        commodityDescription:
+          type: string
+        specialInstructions:
+          type: string
+    ShipmentUpdate:
+      type: object
+      properties:
+        requestedPickupDate:
+          type: string
+          format: date
+        requestedDeliveryDate:
+          type: string
+          format: date
+        weight:
+          type: number
+        commodityDescription:
+          type: string
+        specialInstructions:
+          type: string
+    Load:
+      type: object
+      properties:
+        loadId:
+          type: string
+        shipmentId:
+          type: string
+        status:
+          type: string
+          enum:
+            - assigned
+            - in_transit
+            - delivered
+        carrier:
+          type: string
+        vehicle:
+          type: string
+        driver:
+          type: string
+        pickupDate:
+          type: string
+          format: date-time
+        deliveryDate:
+          type: string
+          format: date-time
+    ShipConfirmation:
+      type: object
+      required:
+        - shipmentId
+        - actualShipDate
+      properties:
+        shipmentId:
+          type: string
+        actualShipDate:
+          type: string
+          format: date-time
+        trackingNumber:
+          type: string
+        carrier:
+          type: string
+        weight:
+          type: number
+        lineItems:
+          type: array
+          items:
+            type: object
+            properties:
+              sku:
+                type: string
+              quantity:
+                type: integer
+              description:
+                type: string
+    ShipmentStatus:
+      type: object
+      properties:
+        shipmentId:
+          type: string
+        currentStatus:
+          type: string
+        lastEvent:
+          type: string
+        lastEventTime:
+          type: string
+          format: date-time
+        currentLocation:
+          type: object
+          properties:
+            latitude:
+              type: number
+            longitude:
+              type: number
+            description:
+              type: string
+        estimatedDelivery:
+          type: string
+          format: date-time
+        events:
+          type: array
+          items:
+            type: object
+            properties:
+              eventType:
+                type: string
+              timestamp:
+                type: string
+                format: date-time
+              location:
+                type: string
+              description:
+                type: string
+    Address:
+      type: object
+      required:
+        - address
+        - city
+        - state
+        - zip
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        country:
+          type: string
+          default: US

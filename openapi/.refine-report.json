@@ -1,0 +1,34 @@
+{
+  "provider": "ryder-system",
+  "sources": [
+    "ryder-system-documents-api-openapi.yml",
+    "ryder-system-fleet-api-openapi.yml",
+    "ryder-system-invoices-api-openapi.yml",
+    "ryder-system-load-events-api-openapi.yml",
+    "ryder-system-loads-api-openapi.yml",
+    "ryder-system-locations-api-openapi.yml",
+    "ryder-system-service-history-api-openapi.yml",
+    "ryder-system-ship-confirmation-api-openapi.yml",
+    "ryder-system-ship-status-api-openapi.yml",
+    "ryder-system-shipments-api-openapi.yml",
+    "ryder-system-tracking-api-openapi.yml"
+  ],
+  "outputs": [
+    "ryder-system-documents-api-openapi.yml",
+    "ryder-system-fleet-api-openapi.yml",
+    "ryder-system-invoices-api-openapi.yml",
+    "ryder-system-load-events-api-openapi.yml",
+    "ryder-system-loads-api-openapi.yml",
+    "ryder-system-locations-api-openapi.yml",
+    "ryder-system-service-history-api-openapi.yml",
+    "ryder-system-ship-confirmation-api-openapi.yml",
+    "ryder-system-ship-status-api-openapi.yml",
+    "ryder-system-shipments-api-openapi.yml",
+    "ryder-system-tracking-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
