@@ -1,0 +1,140 @@
+{
+  "item": [
+    {
+      "id": "963b6311-1bf1-4965-b897-239f57bd67a6",
+      "name": "Tracking",
+      "description": {
+        "content": "Vehicle and shipment location tracking",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "102af9f6-b7d7-4c7c-87a5-6a7eb743e86e",
+          "name": "Submit Location Update",
+          "request": {
+            "name": "Submit Location Update",
+            "description": {
+              "content": "Submit a real-time vehicle location update for tracking purposes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tracking"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"load_id\": \"<string>\",\n  \"latitude\": \"<double>\",\n  \"longitude\": \"<double>\",\n  \"timestamp\": \"<dateTime>\",\n  \"vehicle_id\": \"<string>\",\n  \"speed\": \"<number>\",\n  \"heading\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "46523d28-f698-496f-a41c-53d84513cdf0",
+              "name": "Location update accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tracking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"load_id\": \"<string>\",\n  \"latitude\": \"<double>\",\n  \"longitude\": \"<double>\",\n  \"timestamp\": \"<dateTime>\",\n  \"vehicle_id\": \"<string>\",\n  \"speed\": \"<number>\",\n  \"heading\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ryder.com/rcsc/events/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Ocp-Apim-Subscription-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "128f4a5f-1fb0-4941-8b9b-9f89748eea21",
+    "name": "Ryder Carrier Documents Tracking API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Ryder Carrier API enables carriers to push updates to Ryder for managing transportation, brokerage, and tracking services. Carriers can submit event updates for load tenders, milestones, and vehicle locations, and upload documents to the RyderShare platform. Authentication uses an API key provided in the Ocp-Apim-Subscription-Key header.\n\nContact Support:\n Name: Ryder Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

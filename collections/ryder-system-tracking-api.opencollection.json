@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ryder Carrier Documents Tracking API",
+    "version": "2026-01-01"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Ocp-Apim-Subscription-Key",
+      "value": "{{Ocp-Apim-Subscription-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tracking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Submit Location Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ryder.com/rcsc/events/v1/tracking",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a real-time vehicle location update for tracking purposes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

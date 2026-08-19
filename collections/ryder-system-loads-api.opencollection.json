@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Ryder Carrier Documents Loads API",
+    "version": "2026-01-01"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Ocp-Apim-Subscription-Key",
+      "value": "{{Ocp-Apim-Subscription-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Loads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Loads",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ryder.com/rcsc/events/v1/loads",
+            "params": [
+              {
+                "name": "shipmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of loads associated with shipments."
+        },
+        {
+          "info": {
+            "name": "Get Load",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ryder.com/rcsc/events/v1/loads/:loadId",
+            "params": [
+              {
+                "name": "loadId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific load."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
