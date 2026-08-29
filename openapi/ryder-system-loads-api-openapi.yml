@@ -1,17 +1,18 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Ryder Carrier Documents Loads API
-  description: The Ryder Carrier API enables carriers to push updates to Ryder for managing transportation, brokerage, and tracking services. Carriers can submit event updates for load tenders, milestones, and vehicle locations, and upload documents to the RyderShare platform. Authentication uses an API key provided in the Ocp-Apim-Subscription-Key header.
+  title: Ryder TM Shipment Management Loads API
+  description: The Ryder TM Shipment Management API enables seamless integration for customers to manage shipments, loads, and tracking updates. Customers can submit shipment requirements, retrieve real-time shipment information throughout the lifecycle, and receive event notifications. Authentication uses OAuth 2.0 Client Credentials flow via Okta combined with an API subscription key.
   version: '2026-01-01'
   contact:
     name: Ryder Developer Portal
     url: https://developer.ryder.com
 servers:
-- url: https://api.ryder.com/rcsc/events/v1
+- url: https://api.ryder.com/tmshipment/v1
   description: Production
-- url: https://apiqa.ryder.com/rcsc/events/v1
+- url: https://apiqa.ryder.com/tmshipment/v1
   description: Testing
 security:
+- oauth2: []
 - apiKeyAuth: []
 tags:
 - name: Loads
@@ -103,10 +104,16 @@ components:
           type: string
           format: date-time
   securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.okta.com/oauth2/v1/token
+          scopes: {}
     apiKeyAuth:
       type: apiKey
       in: header
       name: Ocp-Apim-Subscription-Key
 externalDocs:
-  description: Ryder Carrier API Documentation
-  url: https://developer.ryder.com/scs/docs/scs-carrier/overview
+  description: Ryder TM Shipment Management API Documentation
+  url: https://developer.ryder.com/scs/docs/tm-shipment-management/overview

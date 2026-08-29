@@ -1,34 +1,43 @@
 {
   "provider": "ryder-system",
   "sources": [
-    "ryder-system-documents-api-openapi.yml",
-    "ryder-system-fleet-api-openapi.yml",
-    "ryder-system-invoices-api-openapi.yml",
-    "ryder-system-load-events-api-openapi.yml",
-    "ryder-system-loads-api-openapi.yml",
-    "ryder-system-locations-api-openapi.yml",
-    "ryder-system-service-history-api-openapi.yml",
-    "ryder-system-ship-confirmation-api-openapi.yml",
-    "ryder-system-ship-status-api-openapi.yml",
-    "ryder-system-shipments-api-openapi.yml",
-    "ryder-system-tracking-api-openapi.yml"
+    "_original/ryder-carrier-api-openapi.yml",
+    "_original/ryder-fleet-management-api-openapi.yml",
+    "_original/ryder-tm-shipment-api-openapi.yml"
   ],
   "outputs": [
     "ryder-system-documents-api-openapi.yml",
+    "ryder-system-load-events-api-openapi.yml",
+    "ryder-system-tracking-api-openapi.yml",
     "ryder-system-fleet-api-openapi.yml",
     "ryder-system-invoices-api-openapi.yml",
-    "ryder-system-load-events-api-openapi.yml",
-    "ryder-system-loads-api-openapi.yml",
     "ryder-system-locations-api-openapi.yml",
     "ryder-system-service-history-api-openapi.yml",
+    "ryder-system-loads-api-openapi.yml",
     "ryder-system-ship-confirmation-api-openapi.yml",
     "ryder-system-ship-status-api-openapi.yml",
-    "ryder-system-shipments-api-openapi.yml",
-    "ryder-system-tracking-api-openapi.yml"
+    "ryder-system-shipments-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "ryder-carrier-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "ryder-fleet-management-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "ryder-tm-shipment-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0"
+  ],
+  "skipped": [
+    "ryder-system-documents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ryder-system-fleet-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ryder-system-invoices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ryder-system-load-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ryder-system-loads-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ryder-system-locations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ryder-system-service-history-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ryder-system-ship-confirmation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ryder-system-ship-status-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ryder-system-shipments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ryder-system-tracking-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
