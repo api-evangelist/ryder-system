@@ -40,6 +40,8 @@ tags:
   - Trucking
   - Fortune 500
 url: https://raw.githubusercontent.com/api-evangelist/ryder-system/refs/heads/main/apis.yml
+x-api-posture: partner-gated
+x-api-posture-basis: observed
 created: '2026-03-21'
 modified: '2026-05-19'
 specificationVersion: '0.23'
@@ -269,6 +271,9 @@ apis:
   - type: Documentation
     url: https://developer.ryder.com/scs/docs/tm-shipment-management/overview
 common:
+  - type: CapabilityMap
+    url: capabilities/ryder-system-capability-edges.yml
+    name: Ryder System Business Capability Map
   - type: AgenticAccess
     url: agentic-access/ryder-system-agentic-access.yml
   - type: DomainSecurity
