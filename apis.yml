@@ -168,6 +168,8 @@ apis:
   humanURL: https://developer.ryder.com/fms/overview
   baseURL: https://developer.ryder.com/fms/apis
   tags:
+  - Location
+  tags_raw:
   - Locations
   properties:
   - type: OpenAPI
