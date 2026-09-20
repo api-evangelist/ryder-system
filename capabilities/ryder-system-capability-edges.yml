@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 4
+edge_count: 7
 edges:
 - tag: Ship Status
   spec_file: ryder-system-ship-status-api-openapi.yml
@@ -43,6 +43,17 @@ edges:
     'access to Ryder fleet details including vehicle information and specifications'
   reason: Exposes the fleet vehicle register and specifications for leased/rented vehicles — mobile asset
     provisioning/inventory. No single sub-capability is clearly named, so L1 only.
+- tag: Load Events
+  spec_file: ryder-system-load-events-api-openapi.yml
+  capability_id: BC-520.50
+  capability_id_l1: BC-520
+  capability_name: Logistics Operations Management
+  confidence: 0.8
+  evidence: POST /loads/{loadId}/accept 'Accept Load Tender' ... POST /loads/{loadId}/events 'Submit Load
+    Event' ... 'submit event updates for load tenders, milestones, and vehicle locations'
+  reason: Carrier-side load tender acceptance and in-transit milestone/location reporting is transportation
+    execution — Logistics Operations Management.
+  recovered_from: vertical-automotive-mobility-edges.json
 - tag: Service History
   spec_file: ryder-system-service-history-api-openapi.yml
   capability_id: BC-2430.20
@@ -53,3 +64,25 @@ edges:
     maintenance records''; schema: ServiceRecord'
   reason: Exposes per-vehicle maintenance service records for leased fleet assets, which is fleet maintenance
     record-keeping.
+- tag: Shipments
+  spec_file: ryder-system-shipments-api-openapi.yml
+  capability_id: BC-520.50
+  capability_id_l1: BC-520
+  capability_name: Logistics Operations Management
+  confidence: 0.78
+  evidence: POST /shipments createShipment Create Shipment; schemas ShipmentCreate, Load, Address; "enables
+    seamless integration for customers to manage shipments, loads, and tracking updates"
+  reason: CRUD over shipments and loads for a transportation-management service is transport execution
+    — logistics operations management. Could arguably touch order fulfilment, hence not maximal confidence.
+  recovered_from: vertical-automotive-mobility-edges.json
+- tag: Loads
+  spec_file: ryder-system-loads-api-openapi.yml
+  capability_id: BC-520.50
+  capability_id_l1: BC-520
+  capability_name: Logistics Operations Management
+  confidence: 0.75
+  evidence: GET /loads listLoads 'List Loads' ... 'manage shipments, loads, and tracking updates ... retrieve
+    real-time shipment information throughout the lifecycle'
+  reason: Shipment/load retrieval and tracking within a transportation management service is logistics
+    operations execution.
+  recovered_from: vertical-automotive-mobility-edges.json
