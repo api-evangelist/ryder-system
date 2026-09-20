@@ -1,0 +1,55 @@
+slug: ryder-system
+provider: Ryder System
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Ship Status
+  spec_file: ryder-system-ship-status-api-openapi.yml
+  capability_id: BC-2510.20
+  capability_id_l1: BC-2510
+  capability_name: Shipment Tracking Management
+  confidence: 0.85
+  evidence: GET /ship-status/{shipmentId} getShipmentStatus  Get Shipment Status; schema ShipmentStatus;
+    "retrieve real-time shipment information throughout the lifecycle"
+  reason: Single operation returns the current status of a shipment for customer-facing visibility, which
+    is shipment tracking/status resolution rather than any other logistics function.
+- tag: Tracking
+  spec_file: ryder-system-tracking-api-openapi.yml
+  capability_id: BC-2510.10
+  capability_id_l1: BC-2510
+  capability_name: Event Capture and Status Management
+  confidence: 0.85
+  evidence: POST /tracking submitLocationUpdate  Submit Location Update; "Carriers can submit event updates
+    for load tenders, milestones, and vehicle locations"; schema LocationUpdate
+  reason: Inbound carrier event/location push into the visibility platform is event capture and status
+    management for shipment visibility.
+- tag: Fleet
+  spec_file: ryder-system-fleet-api-openapi.yml
+  capability_id: BC-2430
+  capability_id_l1: BC-2430
+  capability_name: Fleet & Mobile Asset Management
+  confidence: 0.82
+  evidence: GET /fleet listFleetVehicles 'List Fleet Vehicles', GET /fleet/{vehicleId} 'Get Vehicle Details';
+    'access to Ryder fleet details including vehicle information and specifications'
+  reason: Exposes the fleet vehicle register and specifications for leased/rented vehicles — mobile asset
+    provisioning/inventory. No single sub-capability is clearly named, so L1 only.
+- tag: Service History
+  spec_file: ryder-system-service-history-api-openapi.yml
+  capability_id: BC-2430.20
+  capability_id_l1: BC-2430
+  capability_name: Fleet Maintenance Management
+  confidence: 0.8
+  evidence: 'GET /fleet/{vehicleId}/service-history getServiceHistory ''Get Service History''; ''historical
+    maintenance records''; schema: ServiceRecord'
+  reason: Exposes per-vehicle maintenance service records for leased fleet assets, which is fleet maintenance
+    record-keeping.
