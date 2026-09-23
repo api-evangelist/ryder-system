@@ -158,25 +158,6 @@ paths:
           description: Invalid event data
 components:
   schemas:
-    Location:
-      type: object
-      properties:
-        name:
-          type: string
-        address:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        zip:
-          type: string
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
     LoadEventCreate:
       type: object
       required:
@@ -241,6 +222,25 @@ components:
               type: string
             type:
               type: string
+    Location:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
   securitySchemes:
     apiKeyAuth:
       type: apiKey

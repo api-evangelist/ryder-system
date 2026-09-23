@@ -1,7 +1,9 @@
 ---
 title: Ryder names Richard Mohr as the new chief technology ...
 url: https://www.facebook.com/RyderSystemInc/posts/ryder-names-richard-mohr-as-the-new-chief-technology-officer-for-fleet-managemen/2530603403640485/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Ryder System" press release artificial intelligence'
 position: 5
 source: serpapi-google

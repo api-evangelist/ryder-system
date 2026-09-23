@@ -25,7 +25,8 @@
     "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "ryder-carrier-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "ryder-fleet-management-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "ryder-tm-shipment-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0"
+    "ryder-tm-shipment-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "ryder-system-documents-api-openapi.yml: previously refined output, superseded by openapi/_original/",

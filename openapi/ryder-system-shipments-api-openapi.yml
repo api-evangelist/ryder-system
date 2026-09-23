@@ -139,9 +139,17 @@ paths:
                 $ref: '#/components/schemas/Shipment'
 components:
   schemas:
-    ShipmentUpdate:
+    ShipmentCreate:
       type: object
+      required:
+      - origin
+      - destination
+      - requestedPickupDate
       properties:
+        origin:
+          $ref: '#/components/schemas/Address'
+        destination:
+          $ref: '#/components/schemas/Address'
         requestedPickupDate:
           type: string
           format: date
@@ -197,29 +205,27 @@ components:
         updatedAt:
           type: string
           format: date-time
-    ShipmentCreate:
+    Address:
       type: object
       required:
-      - origin
-      - destination
-      - requestedPickupDate
+      - address
+      - city
+      - state
+      - zip
       properties:
-        origin:
-          $ref: '#/components/schemas/Address'
-        destination:
-          $ref: '#/components/schemas/Address'
-        requestedPickupDate:
+        name:
           type: string
-          format: date
-        requestedDeliveryDate:
+        address:
           type: string
-          format: date
-        weight:
-          type: number
-        commodityDescription:
+        city:
           type: string
-        specialInstructions:
+        state:
           type: string
+        zip:
+          type: string
+        country:
+          type: string
+          default: US
     Load:
       type: object
       properties:
@@ -245,27 +251,21 @@ components:
         deliveryDate:
           type: string
           format: date-time
-    Address:
+    ShipmentUpdate:
       type: object
-      required:
-      - address
-      - city
-      - state
-      - zip
       properties:
-        name:
+        requestedPickupDate:
           type: string
-        address:
+          format: date
+        requestedDeliveryDate:
           type: string
-        city:
+          format: date
+        weight:
+          type: number
+        commodityDescription:
           type: string
-        state:
+        specialInstructions:
           type: string
-        zip:
-          type: string
-        country:
-          type: string
-          default: US
   securitySchemes:
     oauth2:
       type: oauth2

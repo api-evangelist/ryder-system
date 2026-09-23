@@ -1,7 +1,9 @@
 ---
 title: Ryder Silicon Valley Lab Developing AI-Driven Logistics ...
 url: https://www.truckinginfo.com/news/ryder-establishes-silicon-valley-transportation-technology-lab
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Ryder System" press release artificial intelligence'
 position: 1
 source: serpapi-google
