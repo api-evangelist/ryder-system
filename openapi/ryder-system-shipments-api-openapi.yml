@@ -139,29 +139,52 @@ paths:
                 $ref: '#/components/schemas/Shipment'
 components:
   schemas:
-    ShipmentCreate:
+    Load:
+      type: object
+      properties:
+        loadId:
+          type: string
+        shipmentId:
+          type: string
+        status:
+          type: string
+          enum:
+          - assigned
+          - in_transit
+          - delivered
+        carrier:
+          type: string
+        vehicle:
+          type: string
+        driver:
+          type: string
+        pickupDate:
+          type: string
+          format: date-time
+        deliveryDate:
+          type: string
+          format: date-time
+    Address:
       type: object
       required:
-      - origin
-      - destination
-      - requestedPickupDate
+      - address
+      - city
+      - state
+      - zip
       properties:
-        origin:
-          $ref: '#/components/schemas/Address'
-        destination:
-          $ref: '#/components/schemas/Address'
-        requestedPickupDate:
+        name:
           type: string
-          format: date
-        requestedDeliveryDate:
+        address:
           type: string
-          format: date
-        weight:
-          type: number
-        commodityDescription:
+        city:
           type: string
-        specialInstructions:
+        state:
           type: string
+        zip:
+          type: string
+        country:
+          type: string
+          default: US
     Shipment:
       type: object
       properties:
@@ -205,52 +228,29 @@ components:
         updatedAt:
           type: string
           format: date-time
-    Address:
+    ShipmentCreate:
       type: object
       required:
-      - address
-      - city
-      - state
-      - zip
+      - origin
+      - destination
+      - requestedPickupDate
       properties:
-        name:
+        origin:
+          $ref: '#/components/schemas/Address'
+        destination:
+          $ref: '#/components/schemas/Address'
+        requestedPickupDate:
           type: string
-        address:
+          format: date
+        requestedDeliveryDate:
           type: string
-        city:
+          format: date
+        weight:
+          type: number
+        commodityDescription:
           type: string
-        state:
+        specialInstructions:
           type: string
-        zip:
-          type: string
-        country:
-          type: string
-          default: US
-    Load:
-      type: object
-      properties:
-        loadId:
-          type: string
-        shipmentId:
-          type: string
-        status:
-          type: string
-          enum:
-          - assigned
-          - in_transit
-          - delivered
-        carrier:
-          type: string
-        vehicle:
-          type: string
-        driver:
-          type: string
-        pickupDate:
-          type: string
-          format: date-time
-        deliveryDate:
-          type: string
-          format: date-time
     ShipmentUpdate:
       type: object
       properties:
