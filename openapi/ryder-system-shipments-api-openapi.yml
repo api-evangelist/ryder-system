@@ -139,21 +139,31 @@ paths:
                 $ref: '#/components/schemas/Shipment'
 components:
   schemas:
-    ShipmentUpdate:
+    Load:
       type: object
       properties:
-        requestedPickupDate:
+        loadId:
           type: string
-          format: date
-        requestedDeliveryDate:
+        shipmentId:
           type: string
-          format: date
-        weight:
-          type: number
-        commodityDescription:
+        status:
           type: string
-        specialInstructions:
+          enum:
+          - assigned
+          - in_transit
+          - delivered
+        carrier:
           type: string
+        vehicle:
+          type: string
+        driver:
+          type: string
+        pickupDate:
+          type: string
+          format: date-time
+        deliveryDate:
+          type: string
+          format: date-time
     Shipment:
       type: object
       properties:
@@ -197,52 +207,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    Load:
-      type: object
-      properties:
-        loadId:
-          type: string
-        shipmentId:
-          type: string
-        status:
-          type: string
-          enum:
-          - assigned
-          - in_transit
-          - delivered
-        carrier:
-          type: string
-        vehicle:
-          type: string
-        driver:
-          type: string
-        pickupDate:
-          type: string
-          format: date-time
-        deliveryDate:
-          type: string
-          format: date-time
-    Address:
-      type: object
-      required:
-      - address
-      - city
-      - state
-      - zip
-      properties:
-        name:
-          type: string
-        address:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        zip:
-          type: string
-        country:
-          type: string
-          default: US
     ShipmentCreate:
       type: object
       required:
@@ -266,6 +230,42 @@ components:
           type: string
         specialInstructions:
           type: string
+    ShipmentUpdate:
+      type: object
+      properties:
+        requestedPickupDate:
+          type: string
+          format: date
+        requestedDeliveryDate:
+          type: string
+          format: date
+        weight:
+          type: number
+        commodityDescription:
+          type: string
+        specialInstructions:
+          type: string
+    Address:
+      type: object
+      required:
+      - address
+      - city
+      - state
+      - zip
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        country:
+          type: string
+          default: US
   securitySchemes:
     oauth2:
       type: oauth2
