@@ -164,6 +164,21 @@ components:
         deliveryDate:
           type: string
           format: date-time
+    ShipmentUpdate:
+      type: object
+      properties:
+        requestedPickupDate:
+          type: string
+          format: date
+        requestedDeliveryDate:
+          type: string
+          format: date
+        weight:
+          type: number
+        commodityDescription:
+          type: string
+        specialInstructions:
+          type: string
     Shipment:
       type: object
       properties:
@@ -218,21 +233,6 @@ components:
           $ref: '#/components/schemas/Address'
         destination:
           $ref: '#/components/schemas/Address'
-        requestedPickupDate:
-          type: string
-          format: date
-        requestedDeliveryDate:
-          type: string
-          format: date
-        weight:
-          type: number
-        commodityDescription:
-          type: string
-        specialInstructions:
-          type: string
-    ShipmentUpdate:
-      type: object
-      properties:
         requestedPickupDate:
           type: string
           format: date
